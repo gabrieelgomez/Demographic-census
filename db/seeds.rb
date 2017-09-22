@@ -11,13 +11,13 @@
 # puts 'CREATED ADMIN USER: ' << user.email
 
 [:admin, :client].each do |name|
-  Role.create name: name
-  puts "#{name} has been created"
+ Role.create name: name
+ puts "#{name} has been created"
 end
 
 User.create(
-  name: 'Admin', email: 'admin@keppler.com', password: '12345678',
-  password_confirmation: '12345678', role_ids: '1'
+ name: 'Admin', email: 'admin@keppler.com', password: '12345678',
+ password_confirmation: '12345678', role_ids: '1'
 )
 
 puts 'admin@keppler.com has been created'
@@ -26,18 +26,23 @@ Customize.create(file: "", installed: true)
 puts 'Keppler Template has been created'
 # Create setting deafult
 setting = Setting.new(
-  name: 'Keppler Admin', description: 'Welcome to Keppler Admin',
-  smtp_setting_attributes: {
-    address: 'test', port: '25', domain_name: 'keppler.com',
-    email: 'info@keppler.com', password: '12345678'
-  },
-  google_analytics_setting_attributes: {
-    ga_account_id: '60688852',
-    ga_tracking_id: 'UA-60688852-1',
-    ga_status: true
-  }
+ name: 'Keppler Admin', description: 'Welcome to Keppler Admin',
+ smtp_setting_attributes: {
+   address: 'test', port: '25', domain_name: 'keppler.com',
+   email: 'info@keppler.com', password: '12345678'
+ },
+ google_analytics_setting_attributes: {
+   ga_account_id: '60688852',
+   ga_tracking_id: 'UA-60688852-1',
+   ga_status: true
+ }
 )
+# Para error de mailer_to y mailer_from
+
 setting.social_account = SocialAccount.new
 setting.appearance = Appearance.new(theme_name: 'keppler')
 setting.save
 puts 'Setting default has been created'
+
+KepplerContactUs::MessageSetting.create(mailer_to:"info@emicaguacu.com",mailer_from:"info@emicaguacu.com")
+puts 'Mailer_to & Mailer_from KepplerContactUs has been created'

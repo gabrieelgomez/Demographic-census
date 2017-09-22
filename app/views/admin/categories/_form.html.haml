@@ -1,0 +1,62 @@
+#form_category
+	.wrapper
+		.wrapper-body.container
+			.actions
+				= link_to admin_categories_path, class: "btn-floating btn-flat tooltipped", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+					= material_icon.md_18.arrow_back.css_class("md-dark")
+			.wrapper-inputs
+				.card
+					.card-content
+						= simple_form_for [:admin, @category] do |f|
+							.row.margin-row
+								= f.hidden_field :icon
+								.col.s1
+									%i#icon-visible
+								.col.s11
+									= f.input :name
+							.row
+								.form-actions.left
+									%a.btn-flat.blue.darken-2.icon-modal{"data-target" => "myModal", "data-toggle" => "modal",style: "color: #fff;", href: "#modal-icon"} Agregar icono
+								.form-actions.right
+									= f.button :submit, t("keppler.actions.save"), name: '_save'
+									= f.button :submit, t("keppler.actions.save_and_add_another"), name: '_add_other'
+
+			#modal-icon.modal.modal-fixed-footer
+				.modal-content
+					- @icons_fa.each do |f|
+						%i.icons-category{"aria-hidden" => "true", :class=> "zmdi zmdi-#{f}", :id => "#{f}"}
+
+				.modal-footer
+					%a.modal-action.modal-close.btn-flat.blue.darken-2{:href => "#!"} ¡Fantástico!
+
+
+:css
+	.btn-flat{
+		color: white;
+	}
+	.margin-row{
+		margin: 20px;
+	}
+	.icons-category{
+		color: #555;
+		margin: 10px;
+		font-size: 50px;
+		transition: all ease .4s;
+	}
+	.icons-category:hover{
+		transform: scale(1.4, 1.4);
+		transition: all ease .4s;
+	}
+
+:javascript
+	$(document).ready(function(){
+		$('.icon-modal').click(function(c){
+			$('#modal-icon').openModal();
+		});
+		$( "i" ).click(function(e) {
+			var logo = e.target.id;
+			console.log(logo);
+			$("#category_icon").attr("value", logo);
+			$("#icon-visible").attr("class", "icons-category zmdi zmdi-"+logo);
+		});
+	});

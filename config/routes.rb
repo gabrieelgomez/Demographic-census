@@ -1,10 +1,73 @@
 Rails.application.routes.draw do
-   get '/index', to: 'app/front#index', as: :app_index
-  root to: 'app/front#index'
+  mount Ckeditor::Engine => '/ckeditor'
+  get 'newsletter/create'
 
+  get '/galeria/:album', to: 'app/front#gallery', as: :app_gallery
+  get '/somos', to: 'app/front#somos', as: :app_somos
+  get '/ubicacion', to: 'app/front#ubicacion', as: :app_ubicacion
+
+  get '/galeria', to: 'app/front#albums', as: :app_album
+
+  get '/directorio', to: 'app/front#directorio', as: :app_directorio
+  get '/directorio/category/:category', to: 'app/front#directorio', as: :app_directorio_category
+  get '/directorio/:letter', to: 'app/front#directorio', as: :search
+
+  # get '/search/:query', to: 'app/front#search', as: :search_shop
+  root to: 'app/front#index', as: :root
   devise_for :users, skip: KepplerConfiguration.skip_module_devise
+  mount KepplerContactUs::Engine, :at => '/', as: 'messages'
 
+  post 'newsletter/create', as: "newsletters"
   namespace :admin do
+    resources :banners do
+      get '(page/:page)', action: :index, on: :collection, as: ''
+      get '/clone', action: 'clone'
+      delete(
+        action: :destroy_multiple,
+        on: :collection,
+        as: :destroy_multiple
+      )
+    end
+
+
+    resources :albums do
+      get '(page/:page)', action: :index, on: :collection, as: ''
+      get '/clone', action: 'clone'
+      delete(
+        action: :destroy_multiple,
+        on: :collection,
+        as: :destroy_multiple
+      )
+        resources :photos do
+          get '(page/:page)', action: :index, on: :collection, as: ''
+          get '/clone', action: 'clone'
+          delete(
+            action: :destroy_multiple,
+            on: :collection,
+            as: :destroy_multiple
+          )
+        end
+    end
+
+    resources :categories do
+      get '(page/:page)', action: :index, on: :collection,as: ''
+      get '/clone', action: 'clone'
+      delete(
+        action: :destroy_multiple,
+        on: :collection,
+        as: :destroy_multiple
+      )
+      resources :shops do
+        get '(page/:page)', action: :index, on: :collection, as: ''
+        get '/clone', action: 'clone'
+        delete(
+          action: :destroy_multiple,
+          on: :collection,
+          as: :destroy_multiple
+        )
+      end
+    end
+
     resources :customizes do
       get '(page/:page)', action: :index, on: :collection, as: ''
       get '/clone', action: 'clone'
@@ -67,6 +130,7 @@ Rails.application.routes.draw do
     end
   end
 
+
   # Errors routes
   match '/403', to: 'errors#not_authorized', via: :all, as: :not_authorized
   match '/404', to: 'errors#not_found', via: :all
@@ -75,4 +139,5 @@ Rails.application.routes.draw do
 
   # Dashboard route engine
   mount KepplerGaDashboard::Engine, at: 'admin/dashboard', as: 'dashboard'
+  mount KepplerBlog::Engine, :at => '/', as: 'blog'
 end

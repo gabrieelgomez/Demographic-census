@@ -1,6 +1,7 @@
 #= require jquery
 #= require jquery.turbolinks
 #= require jquery_ujs
+#= require jquery.minicolors
 #= require angular
 #= require sidebar
 #= require noty
@@ -12,5 +13,7 @@
 #= require ckeditor/init
 #= require cocoon
 #= require turbolinks
-#= require jquery.minicolors
+#= require cocoon
+#= require keppler_contact_us/application
+#= require keppler_blog/admin/application
 #= require_tree .

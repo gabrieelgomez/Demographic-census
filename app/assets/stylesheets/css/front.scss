@@ -1,0 +1,263 @@
+@media screen and (max-width: 1440px) and (min-width: 767px){
+  #navbar {
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+  }
+  .three_cols{
+    li{
+      a{
+        font-size: 1.7rem !important;
+        i{
+          margin-right: 0 !important;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px){
+  .three_cols{
+    li{
+      a{
+        font-size: 2.2rem !important;
+        i{
+          margin-right: 15px !important;
+        }
+      }
+    }
+  }
+};
+/* Responsive del footer*/
+.display-only-small{
+  display: none !important;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 767px){
+  .fondo {
+    margin: 0 10%;
+  }
+  .display-only-big{
+    display: none !important;
+  }
+  .display-only-small{
+    display: block !important;
+  }
+  .dropdown-button{
+    font-weight: bolder !important;
+    font-size: 2rem !important;
+    margin-left: auto;
+    margin-right: auto;
+    width: 99.5% !important;
+
+  }
+  hr{
+    margin: 5px 15px !important;
+  }
+  .three_cols li a i{
+    margin-right: 0 !important;
+  }
+
+  #dropdown-menu{
+    .active{
+      a{
+        background-color: #FFF;
+        color: #333;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 415px){
+ .ms-footbar a {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (min-width: 416px) and (max-width: 767px){
+  .three_cols li a i{
+    margin-right:15px !important;
+  }
+}
+
+.navbar-right{
+  @media screen and (max-width: 1199px) and (min-width: 992px){
+    margin-right: 0 !important;
+  }
+}
+
+#logo{
+  @media screen and (max-width: 991px) and (min-width: 768px){
+    margin-left: -210px !important;
+  }
+}
+
+// ------ HEADER -------
+#wowslider-container2{
+  @media screen and (max-width: 767px) and (min-width: 0px){
+    height: 350px !important;
+  }
+  @media screen and (max-width: 991px) and (min-width: 768px){
+    height: 430px !important;
+  };
+
+  img{
+    @media screen and (max-width: 767px) and (min-width: 0px){
+      width: 285%;
+    }
+  }
+  #mensaje{
+    @media screen and (min-width: 0px) and (max-width: 767px){
+      padding: 20px 0 0 15px !important;
+      text-align: center;
+    };
+    b{
+      @media screen and (max-width: 767px) and (min-width: 401px){
+        font-size: 3.5rem;
+        line-height: 1;
+      };
+      @media screen and (min-width: 0px) and (max-width: 400px){
+        font-size: 3rem;
+      }
+    }
+  }
+  .ws_images{
+    @media screen and (max-width: 767px) and (min-width: 0px){
+      background-position: center !important;
+    };
+  }
+}
+// ------ END HEADER ---
+
+// ----- SOMOS ------
+
+.col-md-9{
+  h2.color-primary{
+    @media screen and (max-width: 767px) and (min-width: 0px){
+      font-size: 4.25rem;
+      text-align: center;
+    };
+    @media screen and (max-width: 991px) and (min-width: 768px){
+      font-size: 5.2rem;
+      text-align: center;
+    };
+  }
+}
+
+// ----- SOMOS END -----
+
+// ----- UBICACION -----
+
+.ms-hero-page-override.ms-hero-img-mapa.ms-hero-bg-success{
+  h1{
+    @media screen and (max-width: 767px) and (min-width: 0px){
+      font-size: 2.7rem !important;
+
+    };
+  }
+  p{
+    @media screen and (max-width: 767px) and (min-width: 0px){
+      font-size: 1.7rem !important;
+
+    };
+  }
+
+}
+
+// ----- UBICACION END -----
+
+.ms-hero{
+  .container{
+    .col-xs-12{
+      @media screen and (max-width: 767px) and (min-width: 0px){
+        padding-left: 25px;
+      };
+    }
+  }
+}
+
+.banner-opacity{
+
+  @media screen and (max-width: 767px) and (min-width: 0px){
+    //margin-left: 1%!important;
+    // max-width: 400px !important;
+    width: 84vw !important;
+    height: 84.5vw !important;
+  }
+
+  @media screen and (max-width: 991px) and (min-width: 768px){
+    margin-left: 10% !important;
+    width: 62vw !important;
+    height: 62.5vw !important;
+  }
+  @media screen and (max-width: 1199px) and (min-width: 992px){
+    width: 38vw !important;
+    height: 38.5vw !important;
+  }
+  @media screen and (min-width: 1200px) and (max-width: 1600px){
+    width: 520px !important;
+    height: 530px !important;
+  }
+  @media screen and (min-width: 1601px){
+    width: 520px !important;
+    height: 530px !important;
+  }
+  img{
+    max-width: none !important;
+    @media screen and (max-width: 767px) and (min-width: 0px){
+      margin: 15px 0px 15px 5% !important;
+      left: 20% !important;
+      width: 77vw !important;
+      height: 77vw !important;
+    }
+    @media screen and (max-width: 991px) and (min-width: 768px){
+      margin: 15px !important;
+      width: 54vw !important;
+      height: 56vw !important;
+    }
+    @media screen and (max-width: 1199px) and (min-width: 992px){
+      width: 34vw !important;
+      height: 34vw !important;
+    }
+    @media screen and (min-width: 1200px) and (max-width: 1600px){
+      width: 500px !important;
+      height: 485px !important;
+    }
+    @media screen and (min-width: 1601px){
+      width: 500px !important;
+      height: 485px !important;
+    }
+  }
+
+
+
+  #carousel-hero-img{
+    @media screen and (max-width: 991px) and (min-width: 768px){
+      left: 14% !important;
+    };
+  }
+
+
+  .carousel-indicators-hero-img{
+
+    @media screen and (max-width: 991px) and (min-width: 768px){
+      display: none !important;
+    }
+    @media screen and (max-width: 1199px) and (min-width: 992px){
+      display: none !important;
+    }
+  }
+
+}
+
+.hidden-xs{
+  @media screen and (max-width: 991px) and (min-width: 768px){
+    display: none;
+  };
+}
+
+.ms-hero.ms-hero-material .ms-hero-img .carousel{
+  @media screen and (max-width: 767px) and (min-width: 0px){
+    overflow: visible !important;
+  }
+  @media screen and (max-width: 1199px) and (min-width: 992px){
+    overflow: visible !important;
+  };
+}

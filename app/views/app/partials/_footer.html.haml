@@ -1,0 +1,148 @@
+%aside.ms-footbar{:style => "background: #b8222b !important;z-index:1;"}
+  .container
+    .row
+
+      .col-md-4.ms-footer-col
+        .ms-footbar-block
+          %h3.ms-footbar-title Mapa del sitio
+          %ul.list-unstyled.ms-icon-list.three_cols
+            %li
+              %a{ href: "/" }
+                %i.zmdi.zmdi-home
+                Inicio
+            %li
+              %a{:href => "/blog"}
+                %i.zmdi.zmdi-edit
+                Noticias
+            %li
+              %a{:href => "/#galeria"}
+                %i.zmdi.zmdi-collection-image-o
+                Galería
+            %li
+              %a{:href => "/somos"}
+                %i.zmdi.zmdi-accounts
+                Somos
+            %li
+              %a{:href => "/directorio"}
+                %i.fa.fa-shopping-bag{"aria-hidden" => "true"}
+                Directorio
+            %li
+              %a{:href => "/ubicacion"}
+                %i.zmdi.zmdi-pin
+                Ubicación
+        %hr/
+        .ms-footbar-block
+          %h3.ms-footbar-title Subscríbete
+          %p Siempre tenemos algo nuevo que contar.
+          %p Suscríbete y entérate.
+          = simple_form_for @newsletter, url: main_app.newsletters_path do |f|
+            .form-group.label-floating.mt-2.mb-1
+              .input-group.ms-input-subscribe
+                %label.control-label{:for => "ms-subscribe"}
+                  %i.zmdi.zmdi-email
+                  Correo Electrónico
+                = f.input :email, label: false, input_html: {id:"form-control", class: "string required form-control" }
+                %h4{id:"result"}
+                = raw recaptcha_tags :display => { :theme => 'custom' }
+            %button.ms-subscribre-btn{id:"btn-subscribe", type:"submit", :disabled => "disabled"} Subscribirse
+        -# .hidden-xs{:style => "height: 125px"}
+
+
+      .col-md-4.col-sm-7.ms-footer-col.ms-footer-alt-color{:style => "background: rgb(155, 0, 0) !important;"}
+        .ms-footbar-block
+          %h3.ms-footbar-title.text-center.mb-2
+            %a{:href => "https://twitter.com/emicaguacu", :target => "_blank", :title => "Síguenos en twitter"} @emicaguacu
+          -# %a.twitter-timeline{ href: "https://twitter.com/emicaguacu""data-chrome" => "noheader nofooter noborders", "data-lang" => "es", "data-link-color" => "#b8222b", "data-tweet-limit" => "5"} Tweets de emicaguacu
+          %a.twitter-timeline{ href: "https://twitter.com/#{KepplerBlog.twitter_username}", "data-widget-id"=>"#{KepplerBlog.widget_twitter_id}", "data-chrome"=>"noheader" }
+          %script{:async => "", :charset => "utf-8", :src => "//platform.twitter.com/widgets.js"}
+
+
+      .col-md-4.col-sm-5.ms-footer-col.ms-footer-text-right{:style => "background: #b8222b !important;"}
+        .ms-footbar-block
+          .ms-footbar-title
+            %img.img-responsive.pull-right.hidden-xs{:alt => "Logo Emicaguacu", :src => "/assets/app/sello.jpg", :style => "max-width: 250px;"}
+          .clearfix
+          %br/
+          %address.no-mb
+            %p
+              %i.color-danger-light.zmdi.zmdi-pin.mr-1
+              Av.6 Comunidad Cardón, Punto Fijo
+            %p
+              %i.color-warning-light.zmdi.zmdi-map.mr-1
+              Estado Falcón / Venezuela
+            %p
+              %i.color-info-light.zmdi.zmdi-email.mr-1
+              %a{:href => "mailto:info@emicaguacu.com"} emicaguacu@gamil.com
+            %p
+              %i.color-royal-light.zmdi.zmdi-phone.mr-1
+              +58 (269) 2485348
+            %p
+              %i.color-success-light.fa.fa-fax.mr-1
+              +58 (269) 2485348
+        %br
+        .ms-footbar-block
+          %h3.ms-footbar-title Social Media
+          .ms-footbar-social
+            %a.btn-circle.btn-facebook.rrss{:href => "https://www.facebook.com/emicaguacu/", :target => "_blank"}
+              %i.zmdi.zmdi-facebook
+            %a.btn-circle.btn-twitter.rrss{:href => "https://twitter.com/emicaguacu", :target => "_blank"}
+              %i.zmdi.zmdi-twitter
+            %a.btn-circle.btn-instagram.rrss{:href => "https://www.instagram.com/emicaguacu/", :target => "_blank"}
+              %i.fa.fa-instagram.fa-lg{"aria-hidden" => "true"}
+            %a.btn-circle.btn-google.rrss{:href => "https://goo.gl/maps/5V57AzS4iKy", :target => "_blank"}
+              %i.zmdi.zmdi-google
+
+%footer.ms-footer
+  .container
+    %p
+      Copyright © Emicaguacu Ciudad Comercial 2017 | Powered by
+      %a{:href => "http://slicegroup.xyz/", :target => "_blank"} SliceGroup
+
+.btn-back-top
+  %a#back-top.btn-circle.btn-circle-danger.btn-circle-sm.btn-circle-raised{"data-scroll" => "", :href => "#"}
+    %i.zmdi.zmdi-long-arrow-up
+
+:sass
+  .ms-footbar:before
+    display: none !important
+  .ms-footbar:after
+    display: none !important
+  .ms-footer-col
+    height: 550px
+  .twitter-timeline
+    max-height: 450px !important
+    @media screen and (max-width: 767px)
+      width: 100% !important
+    @media screen and (max-width: 767px)
+      width: 100% !important
+
+
+:javascript
+
+  $('input').on('input', function(){
+    $('input').each(function() {
+      if ($(this).prop('value') === ''){
+        $('#btn-subscribe').prop('disabled',true);
+      } else {
+        $('#btn-subscribe').prop('disabled',false);
+      }
+    });
+  });
+
+
+  $(document).ready(function() {
+    $('#btn-subscribe').click(function(){
+      function validateEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+      }
+      $("#result").text("");
+      var email = $("#form-control").val();
+      if (validateEmail(email)) {
+        $("#results").text(email + "Válido");
+      } else {
+        $("#form-control").css("color", "rgba(255, 0, 0, 0.81)");
+        return false;
+      }
+    });
+  });

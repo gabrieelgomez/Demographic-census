@@ -1,0 +1,88 @@
+.ms-hero.ms-hero-material
+  .container
+    .col-lg-6.col-md-7
+      #carousel-hero.carousel.slide.carousel-fade{"data-interval" => "8000", "data-ride" => "carousel"}
+
+        .carousel-inner{:role => "listbox"}
+          - @posts_carousel.each_with_index do |post,index|
+            - if index.zero?
+              .item.active
+                .carousel-caption
+                  .ms-hero-material-text-container
+                    %header.ms-hero-material-title.animated.slideInLeft.animation-delay-5
+                      %h1.animated.fadeInLeft.animation-delay-15.font-smoothing= post.title
+                      %h2.animated.fadeInLeft.animation-delay-18
+                        = post.created_at.strftime("%d %b. %Y")
+                        |
+                        = post.user.name
+                    .row.animated.zoomInUp.animation-delay-10.fondo2
+                      .col-sm-7.col-xs-12
+                        = image_tag post.image, class: "animated fadeInLeft animation-delay-18 img-responsive"
+
+                      .col-sm-5.col-xs-12.animated.fadeInRight.animation-delay-19.fondo
+                        %p= sanitize(post.body, tags: []).truncate(300)
+
+                    .ms-hero-material-buttons.text-right
+                      .ms-hero-material-buttons.text-right
+                        = link_to "/blog/#{post.permalink}", class: "btn btn-success btn-raised animated fadeInRight animation-delay-24" do
+                          Leer más...
+                          %i.fa.fa-angle-double-right.fa-lg{"aria-hidden" => "true"}
+            - else
+              .item
+                .carousel-caption
+                  .ms-hero-material-text-container
+                    %header.ms-hero-material-title.animated.slideInLeft.animation-delay-5
+                      %h1.animated.fadeInLeft.animation-delay-15.font-smoothing= post.title
+                      %h2.animated.fadeInLeft.animation-delay-18
+                        = post.created_at.strftime("%d %b. %Y")
+                        |
+                        = post.user.name
+                    .row.animated.zoomInUp.animation-delay-10.fondo2
+                      .col-sm-7.col-xs-12
+                        = image_tag post.image, class: "animated fadeInLeft animation-delay-18 img-responsive"
+
+                      .col-sm-5.col-xs-12.animated.fadeInRight.animation-delay-19.fondo
+                        %p= sanitize(post.body, tags: []).truncate(300)
+
+                    .ms-hero-material-buttons.text-right
+                      .ms-hero-material-buttons.text-right
+                        = link_to "/blog/#{post.permalink}", class: "btn btn-success btn-raised animated fadeInRight animation-delay-24" do
+                          Leer más...
+                          %i.fa.fa-angle-double-right.fa-lg{"aria-hidden" => "true"}
+
+          .carousel-controls
+
+            %a.left.carousel-control.animated.zoomIn.animation-delay-30{"data-slide" => "prev", :href => "#carousel-hero", :role => "button"}
+              %i.zmdi.zmdi-chevron-left
+              %span.sr-only Previous
+            %a.right.carousel-control.animated.zoomIn.animation-delay-30{"data-slide" => "next", :href => "#carousel-hero", :role => "button"}
+              %i.zmdi.zmdi-chevron-right
+              %span.sr-only Next
+
+            %ol.carousel-indicators
+              - @posts_carousel.each_with_index do |post, index|
+                - if index.zero?
+                  %li.animated.fadeInUpBig.animation-delay-27.active{"data-slide-to" => "0", "data-target" => "#carousel-hero"}
+                - else
+                  %li.animated.fadeInUpBig.animation-delay-28{"data-slide-to" => "#{index}", "data-target" => "#carousel-hero"}
+
+    .col-lg-6.col-md-5.col-xs-11
+      .ms-hero-img.animated.zoomInUp.animation-delay-30
+        .banner-opacity
+          #carousel-hero-img.carousel.carousel-fade.slide{"data-interval" => "3000", "data-ride" => "carousel"}
+
+            %ol.carousel-indicators.carousel-indicators-hero-img
+              - @banners.each_with_index do |banner, index|
+                - if index == 0
+                  %li.active{"data-slide-to" => "0", "data-target" => "#carousel-hero-img"}
+                - else
+                  %li{"data-slide-to" => "#{index}", "data-target" => "#carousel-hero-img"}
+
+            .carousel-inner{:role => "listbox"}
+              - @banners.each_with_index do |banner, index|
+                - if index == 0
+                  .ms-hero-img-slider.item.active
+                    %img.margin.img-responsive.center{:alt => "", :src => "#{banner.image}"}
+                - else
+                  .ms-hero-img-slider.item
+                    %img.margin.img-responsive.center{:alt => "", :src => "#{banner.image}"}

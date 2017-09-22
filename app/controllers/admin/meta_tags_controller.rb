@@ -35,7 +35,7 @@ module Admin
       @meta_tag = MetaTag.new(meta_tag_params)
 
       if @meta_tag.save
-        redirect(@meta_tag, params)
+        redirect_to admin_meta_tags_path
       else
         render :new
       end
@@ -44,7 +44,7 @@ module Admin
     # PATCH/PUT /meta_tags/1
     def update
       if @meta_tag.update(meta_tag_params)
-        redirect(@meta_tag, params)
+        redirect_to admin_meta_tags_path
       else
         render :edit
       end

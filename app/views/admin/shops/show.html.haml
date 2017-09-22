@@ -1,0 +1,50 @@
+= title(t('keppler.titles.show', model: "Shops"))
+.wrapper
+	.wrapper-body.container
+		.actions
+			- if can? :delete, Shop
+				= link_to admin_category_shop_path(@category_shop,@shop), class: "btn-floating btn-flat right tooltipped", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.delete"), method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
+					= material_icon.md_18.delete.css_class("md-dark")
+			- if can? :update, Shop
+				= link_to edit_admin_category_shop_path(@category_shop,@shop), class: "right btn-floating btn-flat tooltipped", "data-position" => "bottom", "data-tooltip" =>t("keppler.actions.edit") do
+					= material_icon.md_18.create.css_class("md-dark")
+			= link_to admin_category_shops_path(@category_shop,@shop), class: "btn-floating btn-flat tooltipped", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+				= material_icon.md_18.arrow_back.css_class("md-dark")
+		.card
+			.card-image
+				=image_tag @shop.brand, class:"center", style:"width:200px"
+			.card-content
+				%ul.list
+					%li.list-row
+						.display-label= t("activerecord.attributes.#{controller_name.singularize}.header")
+						.display-value.fs-body-1.tc-black-2= @shop.header.to_s.humanize
+					%li.list-row
+						.display-label= t("activerecord.attributes.#{controller_name.singularize}.name")
+						.display-value.fs-body-1.tc-black-2= @shop.name.to_s.humanize
+					%li.list-row
+						.display-label= t("activerecord.attributes.#{controller_name.singularize}.category_id")
+						.display-value.fs-body-1.tc-black-2= @category_shop.name.to_s.humanize
+					%li.list-row
+						.display-label= t("activerecord.attributes.#{controller_name.singularize}.address")
+						.display-value.fs-body-1.tc-black-2= @shop.address.to_s.humanize
+					%li.list-row
+						.display-label= t("activerecord.attributes.#{controller_name.singularize}.description")
+						.display-value.fs-body-1.tc-black-2= @shop.description.to_s.humanize
+					%li.list-row
+						.display-label= t("activerecord.attributes.#{controller_name.singularize}.email")
+						.display-value.fs-body-1.tc-black-2= @shop.email.to_s.humanize
+					%li.list-row
+						.display-label= t("activerecord.attributes.#{controller_name.singularize}.phone_one")
+						.display-value.fs-body-1.tc-black-2= @shop.phone_one.to_s.humanize
+					%li.list-row
+						.display-label= t("activerecord.attributes.#{controller_name.singularize}.phone_two")
+						.display-value.fs-body-1.tc-black-2= @shop.phone_two.to_s.humanize
+					%li.list-row
+						.display-label= t("activerecord.attributes.#{controller_name.singularize}.facebook")
+						.display-value.fs-body-1.tc-black-2= @shop.facebook.to_s.humanize
+					%li.list-row
+						.display-label= t("activerecord.attributes.#{controller_name.singularize}.instagram")
+						.display-value.fs-body-1.tc-black-2= @shop.instagram.to_s.humanize
+					%li.list-row
+						.display-label= t("activerecord.attributes.#{controller_name.singularize}.twitter")
+						.display-value.fs-body-1.tc-black-2= @shop.twitter.to_s.humanize

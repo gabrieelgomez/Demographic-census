@@ -1,0 +1,22 @@
+!!!
+%html{:lang => "es"}
+  %head
+    = render 'app/layouts/head'
+    = render 'app/partials/head'
+  %body
+    = render 'app/partials/preload'
+    = render 'app/partials/shop_button'
+
+    .sb-site-container
+      = render 'app/partials/home'
+
+      = render 'app/partials/navbar'
+      = render 'app/partials_gallery/images'
+
+    = render 'app/partials/footer'
+    = render 'app/partials/sidebar'
+
+    %script{:src => "/assets/js/plugins.min.js"}
+    %script{:src => "/assets/js/app.min.js"}
+    %script{:src => "/assets/js/index.js"}
+    %script{:src => "/assets/js/portfolio.js"}

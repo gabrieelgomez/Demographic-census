@@ -1,0 +1,49 @@
+#contact-us.container.contact-form.form-horizontal.container-pad
+	= render "app/layouts/messages"
+	= simple_form_for @message, :url => "/admin/messages", :method => :post do |f|
+		.row
+			.col-lg-12
+				= f.input :name, label: false, wrapper: :bootstrap, input_html: {class: "form-control", placeholder: "Nombre", required: "required"}
+		.row
+			.col-lg-12
+				= f.input :email, as: :email, label: false, input_html: {class: "form-control", placeholder: "Email", required: "required"}
+		.row
+			.col-lg-12
+				= f.input :subject, label: false, input_html: {class: "form-control", placeholder: "Asunto"}
+		.row
+			.col-lg-12
+				= f.input :content, as: :text, label: false, input_html: {class: "form-control", placeholder: "Mensaje..."}
+		.row
+			.col-lg-6
+				= raw recaptcha_tags :display => { :theme => 'custom' }
+			.col-lg-6
+				%button.btn.btn-raised.btn-primary.pull-right{:type => "submit", style:"margin-top:2.8vh"}
+					ENVIAR
+
+-# %form.form-horizontal
+-#   %fieldset
+-#     .form-group
+-#       %label.col-md-2.control-label{:for => "inputName"} Nombre
+-#       .col-md-9
+-#         %input#inputName.form-control{:placeholder => "Nombre", :type => "text"}
+-#     .form-group
+-#       %label.col-md-2.control-label{:for => "inputEmail"} Email
+-#       .col-md-9
+-#         %input#inputEmail.form-control{:placeholder => "Email", :type => "email"}
+-#     .form-group
+-#       %label.col-md-2.control-label{:for => "inputSubject"} Asunto
+-#       .col-md-9
+-#         %input#inputSubject.form-control{:placeholder => "Asunto", :type => "text"}
+-#     .form-group
+-#       %label.col-md-2.control-label{:for => "textArea"} Mansaje
+-#       .col-md-9
+-#         %textarea#textArea.form-control{:placeholder => "Su mensaje...", :rows => "5"}
+-#     .form-group
+-#       .col-md-9.col-md-offset-2
+-#         %button.btn.btn-raised.btn-primary{:type => "submit"} ENVIAR
+-#         %button.btn.btn-danger{:type => "button"} CANCELAR
+
+:css
+	.container-pad{
+		padding: 0 30% 0 21%;
+	}

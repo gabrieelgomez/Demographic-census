@@ -1,0 +1,26 @@
+%tr{ id: "row-#{photo.id}" }
+	- if can? :destroy_multiple, Photo
+		%td.item-check{style:"width: 10%"}
+			= link_to "", admin_album_photo_path(@album_photo,photo), remote: true, class: "show-row"
+			%input{ type:"checkbox", class: "filled-in", id: "checkbox-#{photo.id}", 'checklist-model'=>"check", 'checklist-value'=>"#{photo.id}", "ng-click"=>"selectByCheck(#{@objects.size})"}
+			%label{ for: "checkbox-#{photo.id}" }
+	%td{style:"width: 30%"}
+		= link_to "", admin_album_photo_path(@album_photo,photo, search: @query), remote: true, class: "show-row"
+		%span
+			= image_tag photo.picture, style:"height:50px"
+	%td{style:"width: 5%"}
+		= link_to admin_album_photo_path(@album_photo,photo), class: "btn-floating waves-effect btn-flat" do
+			= material_icon.md_24.aspect_ratio.css_class("md-dark")
+
+	-# - if can? :clone, Photo
+	-# 	%td{style:"width: 5%"}
+	-# 		= link_to admin_album_photo_clone_path(@album_photo,photo), class: "btn-floating waves-effect btn-flat" do
+	-# 			= material_icon.md_24.content_copy.css_class("md-dark")
+	-# - if can? :update, Photo
+	-# 	%td{style:"width: 1%"}
+	-# 		= link_to edit_admin_album_photo_path(@album_photo,photo), class: "right btn-floating btn-flat tooltipped", style: "float:left !important", "data-position" => "bottom", "data-tooltip" =>t("keppler.actions.edit") do
+	-# 			= material_icon.md_18.create.css_class("md-dark")
+	- if can? :delete, Photo
+		%td{style:"width: 5%"}
+			= link_to admin_album_photo_path(@album_photo,photo), class: "btn-floating btn-flat right tooltipped", style: "float:left !important", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.delete"), method: :delete, data: { confirm: "¿Estás seguro?" } do
+				= material_icon.md_18.delete.css_class("md-dark")

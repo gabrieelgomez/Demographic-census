@@ -6,7 +6,19 @@ gem 'rails', '4.2.0'
 gem 'jquery-rails'
 gem 'angularjs-rails'
 gem 'nprogress-rails'
-gem 'ckeditor'
+gem 'ckeditor', '4.1.4'
+
+# Keppler Blog
+gem 'keppler_blog', git: 'https://github.com/SliceDevelopers/keppler_blog.git', tag: "1.1.0"
+gem 'acts-as-taggable-on', '~> 3.4'
+gem 'social-share-button'
+
+#Mailchimp
+gem 'gibbon', git: "https://github.com/amro/gibbon.git"
+
+#Mailer
+gem 'keppler_contact_us', git: "https://github.com/SliceDevelopers/keppler_contact_us.git"
+gem "recaptcha", require: "recaptcha/rails"
 
 # Documentation
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -37,7 +49,10 @@ gem 'jquery-minicolors-rails'
 
 # Upload
 gem 'carrierwave'
-gem 'rmagick'
+
+#gem 'cloudinary'
+gem "mini_magick"
+#gem 'rmagick'
 
 # Desgin
 gem 'bourbon'

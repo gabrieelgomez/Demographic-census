@@ -1,0 +1,71 @@
+.ms-hero-page-override.ms-hero-img-mapa.ms-hero-bg-success
+  .container
+    .text-center
+      %h1.no-m.ms-site-title.color-white.center-block.ms-site-title-lg.mt-2.animated.zoomInDown.animation-delay-5 Ubicación y Contactos
+      %p.lead.lead-lg.color-light.text-center.center-block.mt-2.mw-800.text-uppercase.fw-300.animated.fadeInUp.animation-delay-7
+        %b Emicaguacu CC
+        se ha ganado la preferencia de la gente que aprecia la calidad, la variedad y el buen gusto que encuentra en sus tiendas, restaurantes, kioscos y cafés.
+.container
+  .card.card-hero.animated.fadeInUp.animation-delay-7
+    .card.card-primary
+      .row
+        .col-lg-3.col-md-4.col-sm-5
+          .card-block.wow.fadeInUp
+            %address.no-mb
+              %p
+                %i.color-danger-light.zmdi.zmdi-pin.mr-1
+                Av.6 Comunidad Cardón, Punto Fijo
+              %p
+                %i.color-warning-light.zmdi.zmdi-map.mr-1
+                Estado Falcón / Venezuela
+              %p
+                %i.color-info-light.zmdi.zmdi-email.mr-1
+                %a{:href => "mailto:info@emicaguacu.com"} info@emicaguacu.com
+              %p
+                %i.color-royal-light.zmdi.zmdi-phone.mr-1
+                +58 (269) 2485348
+              %p
+                %i.color-success-light.fa.fa-fax.mr-1
+                +58 (269) 2485348
+              %p
+                %br
+                %strong Horarios:
+                %br
+                Lunes a Sábado 10AM - 9PM
+                %br
+                Domingo y Feriado 11AM - 8PM
+              %p
+                %br
+                %strong Ubicación:
+                %br
+                Av.6 Comunidad Cardón
+                %br
+                Punto Fijo
+                %br
+                Estado Falcón / Venezuela
+        .col-lg-9.col-md-8.col-sm-7
+          %iframe{:height => "500", :src => "https://www.google.com/maps/d/embed?mid=1mSgeMLbDPv-ZFxEAgyYPV0tkI9c&hl=es", :width => "100%"}
+    .card-block
+      = render "keppler_contact_us/messages/form"
+      -# %form.form-horizontal
+      -#   %fieldset
+      -#     .form-group
+      -#       %label.col-md-2.control-label{:for => "inputName"} Nombre
+      -#       .col-md-9
+      -#         %input#inputName.form-control{:placeholder => "Nombre", :type => "text"}
+      -#     .form-group
+      -#       %label.col-md-2.control-label{:for => "inputEmail"} Email
+      -#       .col-md-9
+      -#         %input#inputEmail.form-control{:placeholder => "Email", :type => "email"}
+      -#     .form-group
+      -#       %label.col-md-2.control-label{:for => "inputSubject"} Asunto
+      -#       .col-md-9
+      -#         %input#inputSubject.form-control{:placeholder => "Asunto", :type => "text"}
+      -#     .form-group
+      -#       %label.col-md-2.control-label{:for => "textArea"} Mansaje
+      -#       .col-md-9
+      -#         %textarea#textArea.form-control{:placeholder => "Su mensaje...", :rows => "5"}
+      -#     .form-group
+      -#       .col-md-9.col-md-offset-2
+      -#         %button.btn.btn-raised.btn-primary{:type => "submit"} ENVIAR
+      -#         %button.btn.btn-danger{:type => "button"} CANCELAR

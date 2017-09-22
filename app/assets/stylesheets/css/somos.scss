@@ -1,0 +1,85 @@
+#somos {
+  .btn {
+    border-radius: 40px;
+    padding: 10px 40px;
+    margin: 45px 30px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+
+    //XS
+    @media screen and (max-width: 767px) and (min-width: 0px) {
+      padding: 6px 0px;
+      margin: 45px 0px;
+    }
+
+  }
+
+  .btn-5 {
+    margin-right: 28vw;
+    background: #107aab;
+    color: #fff;
+    height: 35px;
+    min-width: 250px;
+    line-height: 15px;
+    font-size: 16px;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    //XS
+    @media screen and (max-width: 767px) and (min-width: 0px) {
+      height: 35px;
+      font-size: 12px;
+    }
+
+  }
+
+  .btn-5:active {
+    background: #9053a9;
+    top: 2px;
+  }
+
+  .btn-5 span {
+    display: inline-block;
+    -webkit-transition: all 0.3s;
+    -webkit-backface-visibility: hidden;
+    -moz-transition: all 0.3s;
+    -moz-backface-visibility: hidden;
+    transition: all 0.3s;
+    backface-visibility: hidden;
+  }
+
+  .btn-5:before {
+    position: absolute;
+    height: 0;
+    width: 100%;
+    line-height: 1.2;
+    font-size: 180%;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+
+  .btn-5:active:before {
+    color: #703b87;
+  }
+
+  /* Button 5a */
+  .btn-5a:hover span {
+    -webkit-transform: translateY(300%);
+    -moz-transform: translateY(300%);
+    -ms-transform: translateY(300%);
+    transform: translateY(300%);
+  }
+
+  .btn-5a:before {
+    left: 0;
+    top: -100%;
+  }
+
+  .btn-5a:hover:before {
+    top: 0;
+  }
+}

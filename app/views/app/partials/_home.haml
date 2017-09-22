@@ -1,0 +1,18 @@
+.sb-site-container
+  %header.ms-header.ms-header-white
+    .container.container-full
+      .ms-title
+        %a{:href => "/"}
+          -# %img#logo.animated.fadeInLeft.animation-delay-7{:alt => "Logo Emicaguacu", :src => ""}
+          = image_tag 'app/sello.jpg', id: 'logo', class: 'animated fadeInLeft animation-delay-7'
+      .header-right
+        %form.search-form.animated.zoomInDown.animation-delay-9
+          = search_form_for @q, url: '/directorio', html: { method: :get } do |f|
+            = f.search_field :name_cont, placeholder: 'Buscar tiendas...', id: 'search-box', class: "search-input"
+            %label{:for => "search-box"}
+              %i.zmdi.zmdi-search
+        %a.search-form.animated.zoomInDown.animation-delay-9
+          %i.zmdi.zmdi-user
+
+        -# %a.btn-ms-menu.btn-circle.btn-circle-primary.sb-toggle-left.animated.zoomInDown.animation-delay-10{:href => "javascript:void(0)"}
+        -#   %i.zmdi.zmdi-menu

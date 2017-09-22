@@ -8,9 +8,7 @@ module Admin
 
     def update
       if @setting.update(setting_params)
-        if get_theme?
-          get_apparience_colors([params[:color], params[:darken], params[:accent]])
-        end
+        get_apparience_colors([params[:color], params[:darken], params[:accent]]) if get_color?
         redirect_to(
           admin_settings_path(@render), notice: actions_messages(@setting)
         )
@@ -20,7 +18,7 @@ module Admin
     end
 
     def appearance_default
-      get_apparience_colors(["#f44336", "#d32f2f", "#009688"])
+      get_apparience_colors(["#b8222b", "#d32f2f", "#009688"])
       redirect_to(
         admin_settings_path(@render), notice: actions_messages(@setting)
       )
@@ -28,7 +26,7 @@ module Admin
 
     private
 
-    def get_theme?
+    def get_color?
       colors = [params[:color], params[:darken], params[:accent]]
       !colors.include?('') and !colors.include?(nil)
     end

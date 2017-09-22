@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170603145521) do
+ActiveRecord::Schema.define(version: 20170808171325) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 20170603145521) do
   add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
   add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
 
+  create_table "albums", force: :cascade do |t|
+    t.string   "cover",      limit: 255
+    t.string   "title",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "appearances", force: :cascade do |t|
     t.string   "image_background", limit: 255
     t.string   "theme_name",       limit: 255
@@ -37,6 +44,35 @@ ActiveRecord::Schema.define(version: 20170603145521) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end
+
+  create_table "banners", force: :cascade do |t|
+    t.string   "image",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "icon",       limit: 255
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string   "data_file_name",    limit: 255, null: false
+    t.string   "data_content_type", limit: 255
+    t.integer  "data_file_size",    limit: 4
+    t.string   "type",              limit: 30
+    t.integer  "width",             limit: 4
+    t.integer  "height",            limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "assetable_id",      limit: 4
+    t.string   "assetable_type",    limit: 255
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
   create_table "customizes", force: :cascade do |t|
     t.string   "file",       limit: 255
@@ -71,6 +107,53 @@ ActiveRecord::Schema.define(version: 20170603145521) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "keppler_blog_categories", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "permalink",  limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "keppler_blog_posts", force: :cascade do |t|
+    t.string   "title",          limit: 255
+    t.text     "body",           limit: 65535
+    t.integer  "user_id",        limit: 4
+    t.integer  "category_id",    limit: 4
+    t.integer  "subcategory_id", limit: 4
+    t.string   "image",          limit: 255
+    t.boolean  "public",         limit: 1
+    t.boolean  "comments_open",  limit: 1
+    t.boolean  "shared_enabled", limit: 1
+    t.string   "permalink",      limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "keppler_blog_subcategories", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "permalink",   limit: 255
+    t.integer  "category_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "keppler_contact_us_message_settings", force: :cascade do |t|
+    t.string   "mailer_to",   limit: 255
+    t.string   "mailer_from", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "keppler_contact_us_messages", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "subject",    limit: 255
+    t.string   "email",      limit: 255
+    t.text     "content",    limit: 65535
+    t.boolean  "read",       limit: 1
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   create_table "meta_tags", force: :cascade do |t|
     t.string   "title",       limit: 255
     t.text     "description", limit: 65535
@@ -78,6 +161,19 @@ ActiveRecord::Schema.define(version: 20170603145521) do
     t.string   "url",         limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "newsletters", force: :cascade do |t|
+    t.string   "email",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string   "picture",    limit: 255
+    t.integer  "album_id",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -101,6 +197,23 @@ ActiveRecord::Schema.define(version: 20170603145521) do
     t.string   "favicon",     limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.string   "brand",       limit: 255
+    t.string   "header",      limit: 255
+    t.string   "name",        limit: 255
+    t.integer  "category_id", limit: 4
+    t.text     "address",     limit: 65535
+    t.text     "description", limit: 65535
+    t.string   "email",       limit: 255
+    t.string   "phone_one",   limit: 255
+    t.string   "phone_two",   limit: 255
+    t.string   "facebook",    limit: 255
+    t.string   "instagram",   limit: 255
+    t.string   "twitter",     limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "smtp_settings", force: :cascade do |t|
@@ -135,6 +248,26 @@ ActiveRecord::Schema.define(version: 20170603145521) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id",        limit: 4
+    t.integer  "taggable_id",   limit: 4
+    t.string   "taggable_type", limit: 255
+    t.integer  "tagger_id",     limit: 4
+    t.string   "tagger_type",   limit: 255
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "name",           limit: 255
+    t.integer "taggings_count", limit: 4,   default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   limit: 255

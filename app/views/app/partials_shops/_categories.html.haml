@@ -1,0 +1,41 @@
+- if !@list
+  .col-sm-5.col-xs-12
+    %ul.nav.nav-tabs-ver.display-only-big{:role => "tablist"}
+      - @categories.each_with_index do |category, index|
+        %li#category{:role => "presentation"}
+          %a{:class => "category", :id => "#{category.id}", "aria-controls" => "#{category.name}", "data-click" => "tab", "data-toggle" => "tab", :href => "#category-#{category.id}", :role => "tab"}
+            %i{:class=> "zmdi zmdi-#{category.icon}", "aria-hidden" => "true"}
+            = category.name
+    .display-only-small
+      %button.dropdown-button.btn{:href => "#",:type=>"button", :id=>"dropdown-menu", "data-toggle"=>"dropdown", "aria-expanded"=>"true"} 
+        Categorias
+        %i{:class=> "zmdi zmdi-chevron-down", "aria-hidden" => "true", :style => "margin: 0 0 5px 5px;"}
+      %hr/
+      %ul#dropdown-menu.dropdown-menu{"aria-labelledby"=>"dropdownMenu1"}
+        - @categories.each_with_index do |category, index|
+          %li
+            %a{:class => "category", :id => "#{category.id}", "aria-controls" => "#{category.name}", "data-click" => "tab", "data-toggle" => "tab", :href => "#category-#{category.id}", :role => "tab"}
+              = category.name
+
+/ :javascript
+/   $(document).ready(function(){
+/     $('.dropdown-button').dropdown({
+/       inDuration: 300,
+/       outDuration: 225,
+/       constrainWidth: false, // Does not change width of dropdown to that of the activator
+/       hover: true, // Activate on hover
+/       gutter: 0, // Spacing from edge
+/       belowOrigin: false, // Displays dropdown below the button
+/       alignment: 'left', // Displays dropdown with edge aligned to the left of button
+/       stopPropagation: false // Stops event propagation
+/     });
+/   });
+
+
+
+
+
+
+      
+
+

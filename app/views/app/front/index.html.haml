@@ -1,29 +1,30 @@
-!!!
-%html
-	%header
-		= render 'app/layouts/head'
-	%body
-		%header
-			= #render 'app/layouts/navigation'
-		%main{:role => "main"}
-			= #render 'app/layouts/messages'
-			.front
-				.front-logo
-					= image_tag "app/keppler-front.png", class: "front-logo img-responsive"
-				.front-social
-					%ul
-						%li
-							=	link_to "https://twitter.com/slicegroupxyz", target:"_blank" do
-								= icon 'twitter'
-						%li
-							=	link_to "https://www.facebook.com/slicegroupxyz/", target:"_blank" do
-								= icon 'facebook'
-						%li
-							=	link_to "https://www.instagram.com/slicegroupxyz/", target:"_blank" do
-								= icon 'instagram'
-						%li
-							=	link_to "https://github.com/SliceDevelopers", target:"_blank" do
-								= icon 'github'
+= render 'app/partials_index/head'
+%body
+  = render 'app/partials/shop_button'
+  = render 'app/partials/preload'
 
-			%footer
-				= render 'app/layouts/footer'
+  .sb-site-container
+
+    = render 'app/partials/home'
+    = render 'app/partials/navbar'
+    = render 'app/partials_index/carousel_notices'
+
+    .fondo-verde
+      .container
+        %h1.text-center.text-light.mb-6.wow.fadeInDown.animation-delay-5{ style: "margin: 40px 0 !important;"}
+          %b ¡Siempre hay algo nuevo!
+    = render 'app/partials_index/gallery'
+    -# = render 'app/partials_index/cinex'
+    = render 'app/partials_index/widget_instagram'
+  = render 'app/partials/footer'
+  = render 'app/partials/sidebar'
+
+  %script{:src => "/assets/js/plugins.min.js"}
+  %script{:src => "/assets/js/app.min.js"}
+  %script{:src => "/assets/js/index.js"}
+
+:javascript
+
+  // Cambia las imagen de fondo del Home cada vez que se recarga la página
+  var images = ['bg001.jpg', 'bg002.jpg', 'bg003.jpg', 'bg004.jpg', 'bg005.jpg'];
+  $('.ms-hero.ms-hero-material').css({'background-image': 'url(/assets/app/' + images[Math.floor(Math.random() * images.length)] + ')'});

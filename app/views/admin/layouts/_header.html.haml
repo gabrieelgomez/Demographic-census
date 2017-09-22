@@ -1,7 +1,39 @@
 .header-information.hide-on-small-only{ "ng-style" => listing? ? "{'max-width':'75%'}" : "{'min-width':'100%'}", class: "keppler-bg-1" }
-	%h1 
+	- if (action_name == 'new' or action_name == 'index') and controller_name == 'shops'
+		.category-name
+			%h1
+				= @category_shop.name
+				&nbsp > &nbsp
+	- elsif (action_name == 'new' or action_name == 'index') and controller_name == 'photos'
+		.category-name
+			%h1
+				= @album_photo.title
+				&nbsp > &nbsp
+	- elsif (action_name == 'new' or action_name == 'index') and controller_path == 'admin/categories'
+		.category-name
+			%h1
+				= "Directorio"
+				&nbsp > &nbsp
+	- elsif (action_name == 'new' or action_name == 'index') and controller_path == 'admin/banners'
+		.category-name
+			%h1
+				= "Publicidad"
+				&nbsp > &nbsp
+	- elsif (action_name =='new' or action_name == 'index') and controller_path == 'admin/albums'
+		.category-name
+			%h1
+				= "Galeria"
+				&nbsp > &nbsp
+	%h1.header-information-title
 		= content_for?(:header_information) ? yield(:header_information) : t("keppler.modules.#{controller_path.underscore}")
-	%small 
+	%small
 		= t("keppler.actions.#{action_name}")
 
-	
+:sass
+	.header-information
+		&-title
+			display: inline-block
+		.category-name
+			display: inline-block
+		small
+			display: block

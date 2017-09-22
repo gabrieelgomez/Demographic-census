@@ -1,0 +1,118 @@
+!!!
+%html{:lang => "es"}
+  = render 'app/layouts/head'
+  = render 'app/partials/head'
+  %body
+    = render 'app/partials/shop_button'
+    = render 'app/partials/preload'
+
+    .sb-site-container
+      %header.ms-header.ms-header-white
+        .container.container-full
+          .ms-title
+            %a{ href: "/" }
+              %img#logo.animated.fadeInLeft.animation-delay-7{:alt => "Logo Emicaguacu", :src => "/assets/img/logo_color.png"}
+          .header-right
+            %form.search-form.animated.zoomInDown.animation-delay-9
+              %input#search-box.search-input{:name => "q", :placeholder => "Buscar...", :type => "text"}
+              %label{:for => "search-box"}
+                %i.zmdi.zmdi-search
+            %a.btn-ms-menu.btn-circle.btn-circle-primary.sb-toggle-left.animated.zoomInDown.animation-delay-10.visible-xs.visible-sm{:href => "javascript:void(0)"}
+              %i.zmdi.zmdi-menu
+
+      = render 'app/partials/navbar'
+      .container
+        .row
+          .col-md-8
+            %article.card.mb-4.wow.materialUp.animation-delay-5
+              %figure.ms-thumbnail.ms-thumbnail-diagonal
+                = image_tag @post.image
+                %figcaption.ms-thumbnail-caption.text-center
+                  -if @post.shared_enabled
+                    .ms-thumbnail-caption-content
+                      %h3.ms-thumbnail-caption-title Compartir
+                      = render 'share'
+                  -else
+                    .ms-thumbnail-caption-content
+                      %h3.ms-thumbnail-caption-title ¡Ven, Vive y Disfruta!
+
+              .card-block
+                %h2
+                  = link_to @post.title, blog_show_post_path(@post.permalink, popup: "true")
+                %span
+                  %i.fa.fa-calendar
+                  = @post.created_at.strftime("%d %b. %Y")
+                  %i.fa.fa-tags
+                  = link_to @post.category.name, filter_path('category', @post.category.permalink)
+                  %i.fa.fa-user
+                  = link_to @post.user.name, filter_path('autor', @post.user.permalink)
+                -# = @post.shared_enabled ? social_share_button_tag(@post.title) : "<br>".html_safe
+                .post-body
+                  = @post.body.html_safe
+                  .mt-1
+                    - @post.tags.each do |tag|
+                      = link_to filter_path("tag", tag.name.parameterize), class: "ms-tag ms-tag-info tag #{'active' if params[:permalink] and tag.name.downcase.eql?(params[:permalink].gsub("-", " ").downcase)}" do
+                        %i.fa.fa-tags
+                        = tag.name
+
+            = render 'facebook_comments'
+          .col-md-4
+            .card.animated.fadeInUp.animation-delay-7
+              .card-tabs
+                %ul.nav.nav-tabs.nav-tabs-full.nav-tabs-4.shadow-2dp{:role => "tablist"}
+                  %li.active{:role => "presentation"}
+                    %a.withoutripple{"aria-controls" => "categories", "data-toggle" => "tab", :href => "#categories", :role => "tab"}
+                      %i.no-mr.zmdi.zmdi-folder
+                  %li{:role => "presentation"}
+                    %a.withoutripple{"aria-controls" => "archives", "data-toggle" => "tab", :href => "#archives", :role => "tab"}
+                      %i.no-mr.zmdi.zmdi-time
+                  %li{:role => "presentation"}
+                    %a.withoutripple{"aria-controls" => "tags", "data-toggle" => "tab", :href => "#tags", :role => "tab"}
+                      %i.no-mr.zmdi.zmdi-tag-more
+              .tab-content
+                #categories.tab-pane.fade.active.in{:role => "tabpanel"}
+                  .list-group
+                    - @post_categories.each do |category|
+                      = link_to filter_path('category', category.permalink), class: "list-group-item withripple dropdown-toggle #{'active' if category.permalink.eql?(params[:permalink]) or category.permalink.eql?(params[:category])}" ,"aria-expanded" => false, "aria-haspopup" => true, "data-toggle" => "dropdown disabled", :role => "button" do
+                        = category.name.titleize
+                        %span.badge.badge-info
+                          = category.posts.size
+                #archives.tab-pane.fade{:role => "tabpanel"}
+                  .list-group
+                    - @posts_recents.each do |post|
+                      = link_to blog_show_post_path(@post.permalink), class: "list-group-item withripple" do
+                        %i.zmdi.zmdi-calendar
+                        = @post.created_at.strftime("%d %b. %Y")
+                        %span.badge= @total_recents
+                #tags.tab-pane.fade{:role => "tabpanel"}
+                  .card-block.text-center
+                    - ActsAsTaggableOn::Tag.most_used(20).each do |tag|
+                      = link_to filter_path("tag", tag.name.parameterize), class: "ms-tag ms-tag-primary tag #{'active' if params[:permalink] and tag.name.downcase.eql?(params[:permalink].gsub("-", " ").downcase)}" do
+                        %i.fa.fa-tags
+                        = tag.name
+            .card.card-info.animated.fadeInUp.animation-delay-7
+              .card-header
+                %h3.card-title
+                  %i.zmdi.zmdi-twitter
+                  = "Tweets por @#{KepplerBlog.twitter_username}"
+              %a.twitter-timeline{ href:"https://twitter.com/#{KepplerBlog.twitter_username}", "data-widget-id"=>"#{KepplerBlog.widget_twitter_id}", "data-chrome"=>"header" }
+
+            -# .card.card-primary.animated.fadeInUp.animation-delay-7
+            -#   .card-header
+            -#     %h3.card-title
+            -#       %i.zmdi.zmdi-widgets
+            -#       Descripción
+            -#   .card-block
+            -#     %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat ipsam non eaque est architecto doloribus, labore nesciunt laudantium, ex id ea, cum facilis similique tenetur fugit nemo id minima possimus.
+      / container
+      / /.Container
+      /
+        ******************************************
+        ELEMENTOS DEL FOOTER
+        ******************************************
+      = render 'app/partials/footer'
+      = render 'app/partials/sidebar'
+    / //////////////// JAVASCRIP ////////////////////
+    %script{:src => "/assets/js/plugins.min.js"}
+    %script{:src => "/assets/js/app.min.js"}
+    %script{:src => "/assets/js/index.js"}

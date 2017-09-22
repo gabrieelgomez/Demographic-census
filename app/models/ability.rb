@@ -5,7 +5,32 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
 
+    can :manage, KepplerContactUs::Message
+    can :manage, KepplerContactUs::MessageSetting
+
     if user.has_role? :admin
+
+      # - Banner authorize -
+      can :manage, Banner
+
+      # - Photo authorize -
+      can :manage, Photo
+
+      # - Album authorize -
+      can :manage, Album
+
+      # - Posts authorize -
+      can :manage, KepplerBlog::Post
+      can :manage, KepplerBlog::Category
+      
+      # - Banner authorize -
+      can :manage, Banner
+
+      # - Shop authorize -
+      can :manage, Shop
+
+      # - Category authorize -
+      can :manage, Category
 
       # - Customize authorize -
       can [:delete, :update,
@@ -30,6 +55,12 @@ class Ability
       can :destroy, User do |u|
         !u.eql?(user)
       end
+
+    elsif user.has_role? :autor
+      can :manage, KepplerBlog::Post, :user_id => user.id
+
+    elsif user.has_role? :editor
+      can [:index, :update, :edit, :show]
 
     elsif user.has_role? :client
 

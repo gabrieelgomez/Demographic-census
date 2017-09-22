@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :appearance
   before_action :set_apparience_colors
+  before_action :set_newsletter
   include PublicActivity::StoreController
   include AdminHelper
 
@@ -23,7 +24,15 @@ class ApplicationController < ActionController::Base
     }
   end
 
+  def kaminari_params
+    @current_page = params[:page] unless params[:page].blank?
+  end
+
   private
+
+  def set_newsletter
+    @newsletter = Newsletter.new
+  end
 
   # block access dashboard
   def dashboard_access

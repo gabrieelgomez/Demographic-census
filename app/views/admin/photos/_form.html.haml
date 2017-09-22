@@ -1,0 +1,16 @@
+.wrapper
+	.wrapper-body.container
+		.actions
+			= link_to admin_album_photos_path, class: "btn-floating btn-flat tooltipped", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+				= material_icon.md_18.arrow_back.css_class("md-dark")
+		.wrapper-inputs
+			.card
+				.card-content
+					= simple_form_for [:admin, @album_photo, @photo] do |f|
+						.row
+							= f.input :picture, :as => :file_material, label: false, wrapper_html: { class: "file-field" }
+							= f.hidden_field :album_id
+
+							.form-actions.right
+								= f.button :submit, "Guardar", name: '_save'
+								= f.button :submit, "Guardar y agregar otro", name: '_add_other'

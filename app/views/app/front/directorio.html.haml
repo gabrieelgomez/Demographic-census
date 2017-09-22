@@ -1,0 +1,85 @@
+!!!
+%html{:lang => "es"}
+  %head
+    -#= render 'app/layouts/head'
+    = render 'app/partials/head'
+  %body
+    = render '/app/partials/shop_button'
+    = render '/app/partials/preload'
+
+    .sb-site-container
+      = render 'app/partials/home'
+      = render 'app/partials/navbar'
+
+      = render 'app/partials_shops/header'
+      .container
+        .card.card-hero.animated.slideInUp.animation-delay-8.mb-6
+          .card-block{style: "heigth: auto !important"}
+            %h2.right-line.color-warning-light{:style => "padding-bottom: 5px;"}
+              - if !params[:q].nil?
+                %b= @count
+                - if @count == 1
+                  %b RESULTADO
+                - else
+                  RESULTADOS
+              - elsif @param
+                - @categories.each do |categoria|
+                  - if categoria.id == @param.to_i
+                    = categoria.name
+              - else
+                %b TIENDAS
+            .card.nav-tabs-ver-container
+              .row
+                .display-only-small
+                  = render '/app/partials_shops/categories'
+                .col-xs-12.nav-tabs-ver-container-content{ class: "col-sm-#{@list ? 12 : 7}"}
+                  .card-block
+                    .tab-content
+                      - @categories.each_with_index do |categoria, index|
+                        - if @list && params[:q].nil?
+                          .tab-pane.active{:role => "tabpanel", :id => "category-#{categoria.id}"}
+                            .row
+                              - @tiendas.each_with_index do |shop, index|
+                                - if categoria.id == shop.category_id && categoria.id == @param.to_i
+                                  %div{ class: "col-sm-#{@list ? 3 : 6}"}
+                                    .col-md-12
+                                      %ul.list-line
+                                        %li
+                                          %a{"data-target" => "#modal#{shop.id}", "data-toggle" => "modal", :href => "#"}
+                                            = shop.name
+
+                        - elsif !params[:q].nil?
+                          .tab-pane.active{:role => "tabpanel", :id => "category-#{categoria.id}"}
+                            .row
+                              - @tiendas.each do |shop|
+                                - if categoria.id == shop.category_id
+                                  %div{ class: "col-sm-#{@list ? 3 : 6}"}
+                                    .col-md-12
+                                      %ul.list-line
+                                        %li
+                                          %a{"data-target" => "#modal#{shop.id}", "data-toggle" => "modal", :href => "#"}
+                                            = shop.name
+                        - else
+                          .tab-pane.active{:role => "tabpanel", :id => "category-#{categoria.id}"}
+                            .row
+                              - @tiendas.each do |shop|
+                                - if categoria.id == shop.category_id
+                                  %div{ class: "col-sm-#{@list ? 3 : 6}"}
+                                    .col-md-12
+                                      %ul.list-line
+                                        %li
+                                          %a{"data-target" => "#modal#{shop.id}", "data-toggle" => "modal", :href => "#"}
+                                            = shop.name
+                      - if @count.zero?
+                        .container
+                          %h4 No se han encontrado resultados.
+                .display-only-big
+                  = render '/app/partials_shops/categories'
+              -# = paginate @tiendas, outer_window: 1
+    = render '/app/partials/footer'
+    = render '/app/partials/sidebar'
+    = render '/app/partials_shops/modal'
+    %script{:src => "/assets/js/plugins.min.js"}
+    %script{:src => "/assets/js/app.min.js"}
+    %script{:src => "/assets/js/index.js"}
+    %script{:src => "/assets/js/portfolio.js"}

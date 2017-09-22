@@ -1,0 +1,56 @@
+%nav.navbar.navbar-static-top.yamm.ms-navbar.ms-navbar-primary
+  .container.container-full
+    .navbar-header
+      %a.navbar-brand{ href: "/", style: 'padding: 0' }
+        %img#logo2{:alt => "Logo Emicagucu", :src => "/assets/app/sello.jpg"}
+    #navbar.navbar-collapse.collapse
+      %ul.nav.navbar-nav.menues.visible-md.visible-lg
+        %li.dropdown.yamm-fw
+          %a.dropdown-toggle.animated.fadeIn.animation-delay-6{ :href => "/directorio", "aria-expanded" => "false", "aria-haspopup" => "true", "data-hover" => "dropdown", "data-name" => "component", "data-toggle" => "dropdown", :role => "button"}
+            %i.fa.fa-shopping-bag{"aria-hidden" => "true"}
+            Directorio
+            %i.zmdi.zmdi-chevron-down
+          %ul.dropdown-menu.dropdown-megamenu.animated.fadeIn.animated-2x
+            %li
+              .row
+                - i = 0
+                - 4.times do
+                  - break if @categories[i].nil? or i > 11
+                  .col-sm-3.megamenu-col
+                    .megamenu-block.animated.fadeInLeft.animated-2x
+                      %ul.megamenu-block-list
+                        - 4.times do
+                          - break if @categories[i].nil? or i > 11
+                          %li
+                            = link_to @categories[i].name, "/directorio/category/#{@categories[i].id}"
+                            - i += 1
+
+        %li
+          %a{:href => "/somos"}
+            %i.zmdi.zmdi-accounts
+            Somos
+        %li
+          %a{:href => "/galeria"}
+            %i.zmdi.zmdi-collection-image-o
+            Galería
+        %li
+          %a{:href => "/ubicacion"}
+            %i.zmdi.zmdi-pin
+            Ubicación
+        %li
+          %a{:href => "/blog"}
+            %i.zmdi.zmdi-edit
+            Noticias
+    / navbar-collapse collapse
+    %a.sb-toggle-left.btn-navbar-menu.visible-sm.visible-xs{:href => "javascript:void(0)"}
+      %i.zmdi.zmdi-menu
+
+:scss
+  .navbar-brand {
+    margin-left: 90px !important;
+  }
+
+  .sb-toggle-left {
+    float: left !important;
+    left: 0 !important;
+  }

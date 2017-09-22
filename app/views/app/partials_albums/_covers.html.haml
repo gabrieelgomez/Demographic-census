@@ -1,0 +1,35 @@
+.material-background
+.container
+  .row
+    .col-md-12
+      .row.masonry-container
+        - @albums.each_with_index do |album, index|
+          .col-md-6.col-sm-6.masonry-item.wow.fadeInUp.animation-delay-2
+            .card
+            = link_to app_gallery_path(album.id) do
+              %figure.ms-thumbnail.ms-thumbnail-horizontal
+                %img.img-responsive{:alt => "", :src => "#{album.cover}"}
+              %p#title-album
+                %span= album.title
+
+:scss
+
+  #title-album{
+    font: 0.9em 'Lato', sans-serif;
+    position: absolute;
+    left: 1.7em;
+    margin-right: 10em;
+    z-index: 50;
+    background: none;
+    background-color: #fff;
+    color: #000;
+    padding: 1em;
+    bottom: 0;
+    opacity: 1;
+    text-transform: uppercase;
+    -webkit-border-radius: 0.8em;
+    -moz-border-radius: 0.8em;
+    border-radius: 0.8em;
+    outline: none!important;
+    text-decoration: none!important;
+  }

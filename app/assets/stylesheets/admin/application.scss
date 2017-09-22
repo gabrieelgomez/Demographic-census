@@ -9,6 +9,7 @@
 @import 'materialize';
 @import 'utils/variables';
 @import 'utils/mixins';
+@import 'utils/material-design-iconic-font';
 @import 'pages/layout';
 @import 'pages/devise';
 @import 'pages/navbar';
@@ -20,3 +21,4 @@
 @import 'pages/search';
 @import 'pages/themes';
 @import 'dashboard'; //dashboard gem
+@import "keppler_blog/admin/blog";

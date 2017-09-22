@@ -1,0 +1,54 @@
+.ms-slidebar.sb-slidebar.sb-left.sb-momentum-scrolling.sb-style-overlay{:style => 'z-index: 999'}
+  %header.ms-slidebar-header
+    -# .ms-slidebar-login
+    -#   %a.withripple{:href => "javascript:void(0)"}
+    -#     %i.zmdi.zmdi-account{:style => "color: #b8222b; font-size: 6rem"}
+    -#     Login
+    -#   %a.withripple{:href => "javascript:void(0)"}
+    -#     %i.zmdi.zmdi-account-add{:style => "color: #b8222b; font-size: 6rem"}
+    -#     Registro
+    .ms-slidebar-title
+      .ms-slidebar-t
+        %img{:alt => "Logo Emicaguacu", :src => "/assets/img/logo_white2.png", :style => "max-width: 190px;"}
+
+  %ul#slidebar-menu.ms-slidebar-menu{"aria-multiselectable" => "true", :role => "tablist"}
+    %li
+      %a.link{:href => "/"}
+        %i.zmdi.zmdi-home
+        Inicio
+    %li
+      %a.link{:href => "/directorio"}
+        %i.fa.fa-shopping-bag{"aria-hidden" => "true"}
+        Directorio
+    %li
+      %a.link{:href => "/somos"}
+        %i.zmdi.zmdi-accounts
+        Somos
+    %li
+      %a.link{:href => "/galeria"}
+        %i.zmdi.zmdi-collection-image-o
+        Galería
+    %li
+      %a.link{:href => "/ubicacion"}
+        %i.zmdi.zmdi-pin
+        Ubicación
+    %li
+      %a.link{:href => "/blog"}
+        %i.zmdi.zmdi-edit
+        Noticias
+  .container-fluid
+    .ms-slidebar-social.ms-slidebar-block
+      %h4.ms-slidebar-block-title Síguenos
+      .ms-slidebar-social
+        %a.btn-circle.btn-circle-raised.btn-facebook{:href => "https://www.facebook.com/cclasvitudes/", :target => "_blank"}
+          %i.zmdi.zmdi-facebook
+          .ripple-container
+        %a.btn-circle.btn-circle-raised.btn-twitter{:href => "https://twitter.com/emicaguacu", :target => "_blank"}
+          %i.zmdi.zmdi-twitter
+          .ripple-container
+        %a.btn-circle.btn-circle-raised.btn-instagram{:href => "https://www.instagram.com/emicaguacu/", :target => "_blank"}
+          %i.fa.fa-instagram.fa-lg{"aria-hidden" => "true"}
+          .ripple-container
+        / %a.btn-circle.btn-circle-raised.btn-google{:href => "https://goo.gl/maps/5V57AzS4iKy", :target => "_blank"}
+        /   %i.zmdi.zmdi-google
+        /   .ripple-container

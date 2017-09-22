@@ -1,0 +1,216 @@
+!!!
+%html{:lang => "es"}
+  = render 'app/layouts/head'
+  = render 'app/partials/head'
+  %body
+    = render 'app/partials/shop_button'
+    = render 'app/partials/preload'
+
+    .sb-site-container
+      %header.ms-header.ms-header-white
+        .container.container-full
+          .ms-title
+            %a{ href: "/" }
+              %img#logo.animated.fadeInLeft.animation-delay-7{:alt => "Logo Emicaguacu", :src => "/assets/img/logo_color.png"}
+          .header-right
+            %form.search-form.animated.zoomInDown.animation-delay-9
+              = search_form_for @q, url: '/blog', html: { method: :get } do |f|
+                = f.search_field :title_or_body_cont, placeholder: 'Buscar noticias...', id: 'search-box', class: "search-input"
+                %label{:for => "search-box"}
+                  %i.zmdi.zmdi-search
+            -# %a.btn-ms-menu.btn-circle.btn-circle-primary.sb-toggle-left.animated.zoomInDown.animation-delay-10.visible-xs.visible-sm{:href => "javascript:void(0)"}
+            -#   %i.zmdi.zmdi-menu
+
+      = render 'app/partials/navbar'
+      .container
+        .row
+          .col-md-8
+            - unless @posts.empty?
+              - var = 0
+              - @posts.reverse_order.each_with_index do |post, index|
+                - var+=1
+                %article.card.mb-4.wow.materialUp.animation-delay-5
+                  %figure.ms-thumbnail.ms-thumbnail-diagonal
+                    = image_tag post.image
+                    %figcaption.text-center.ms-thumbnail-caption{:id => "#{var}"}
+                      -if post.shared_enabled
+                        .ms-thumbnail-caption-content
+                          %h3.ms-thumbnail-caption-title Compartir
+                          .mt-2#share
+                            .ms-footbar-block
+                              .ms-footbar-social
+                                %ul.ul-share
+                                  %li.facebook-p{:id => "fb-#{var}"}
+                                    %a.btn-circle.btn-facebook.rrss{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A//www.emicaguacu.com/blog/", :target => "_blank"}
+                                      %i.zmdi.zmdi-facebook
+
+                                  %li.button-share{:id => "#{var}"}
+                                    %a.btn-circle.btn-shares.rrss
+                                      %i.zmdi.zmdi-share
+
+                                  %li.twitter-p{:id => "twt-#{var}"}
+                                    %a.btn-circle.btn-twitter.rrss{:href => "https://twitter.com/home?status=https%3A//www.emicaguacu.com/blog/", :target => "_blank"}
+                                      %i.zmdi.zmdi-twitter
+                                -# %li
+                                -#   %a.btn-circle.btn-instagram.rrss{:href => "https://www.instagram.com/emicaguacu/", :target => "_blank"}
+                                -#     %i.fa.fa-instagram.fa-lg{"aria-hidden" => "true"}
+                                -# %li
+                                -#   %a.btn-circle.btn-google.rrss{:href => "https://goo.gl/maps/5V57AzS4iKy", :target => "_blank"}
+                                -#     %i.zmdi.zmdi-google
+                      -else
+                        .ms-thumbnail-caption-content
+                          %h3.ms-thumbnail-caption-title ¡Ven, Vive y Disfruta!
+
+                  .card-block
+                    %h2
+                      = link_to post.title, blog_show_post_path(post.permalink)
+                    %span
+                      %i.fa.fa-calendar
+                      = post.created_at.strftime("%d %b. %Y")
+                      %i.fa.fa-tags
+                      = link_to post.category.name, filter_path('category', post.category.permalink)
+                      %i.fa.fa-user
+                      = link_to post.user.name, filter_path('autor', post.user.permalink)
+                    %p= sanitize(post.body, tags: []).truncate(300)
+                    .row
+                      .col-md-6
+                        .mt-1
+                          - post.tags.most_used(3).each do |tag|
+                            = link_to filter_path("tag", tag.name.parameterize), class: "ms-tag ms-tag-info tag #{'active' if params[:permalink] and tag.name.downcase.eql?(params[:permalink].gsub("-", " ").downcase)}" do
+                              %i.fa.fa-tags
+                              = tag.name
+                      .col-md-6
+                        = link_to blog_show_post_path(post.permalink), class: "btn btn-primary btn-raised btn-block animate-icon" do
+                          Leer más
+                          %i.ml-1.no-mr.zmdi.zmdi-long-arrow-right
+            - else
+              %center
+                No se encontraron resultados.
+            = paginate @posts, outer_window: 3
+          .col-md-4
+            .card.animated.fadeInUp.animation-delay-7
+              .card-tabs
+                %ul.nav.nav-tabs.nav-tabs-full.nav-tabs-3.shadow-2dp{:role => "tablist"}
+                  %li.active{:role => "presentation"}
+                    %a.withoutripple{"aria-controls" => "categories", "data-toggle" => "tab", :href => "#categories", :role => "tab"}
+                      %i.no-mr.zmdi.zmdi-folder
+                  %li{:role => "presentation"}
+                    %a.withoutripple{"aria-controls" => "archives", "data-toggle" => "tab", :href => "#archives", :role => "tab"}
+                      %i.no-mr.zmdi.zmdi-time
+                  %li{:role => "presentation"}
+                    %a.withoutripple{"aria-controls" => "tags", "data-toggle" => "tab", :href => "#tags", :role => "tab"}
+                      %i.no-mr.zmdi.zmdi-tag-more
+              .tab-content
+                #categories.tab-pane.fade.active.in{:role => "tabpanel"}
+                  .list-group
+                    - @post_categories.each do |category|
+                      = link_to filter_path('category', category.permalink), class: "list-group-item withripple dropdown-toggle #{'active' if category.permalink.eql?(params[:permalink]) or category.permalink.eql?(params[:category])}" ,"aria-expanded" => false, "aria-haspopup" => true, "data-toggle" => "dropdown disabled", :role => "button" do
+                        = category.name.titleize
+                        %span.badge.badge-info
+                          = category.posts.size
+                #archives.tab-pane.fade{:role => "tabpanel"}
+                  .list-group
+                    - @posts_recents.each do |post|
+                      = link_to blog_show_post_path(post.permalink), class: "list-group-item withripple" do
+                        %i.zmdi.zmdi-calendar
+                        = post.created_at.strftime("%d %b. %Y")
+                        = sanitize(post.title, tags: []).truncate(25)
+                        -# %span.badge 46
+                #tags.tab-pane.fade{:role => "tabpanel"}
+                  .card-block.text-center
+                    - ActsAsTaggableOn::Tag.most_used(20).each do |tag|
+                      = link_to filter_path("tag", tag.name.parameterize), class: "ms-tag ms-tag-primary tag #{'active' if params[:permalink] and tag.name.downcase.eql?(params[:permalink].gsub("-", " ").downcase)}" do
+                        %i.fa.fa-tags
+                        = tag.name
+            .card.card-info.animated.fadeInUp.animation-delay-7
+              .card-header
+                %h3.card-title
+                  %i.zmdi.zmdi-twitter
+                  = "Tweets por @#{KepplerBlog.twitter_username}"
+              %a.twitter-timeline{ href:"https://twitter.com/#{KepplerBlog.twitter_username}", "data-widget-id"=>"#{KepplerBlog.widget_twitter_id}", "data-chrome"=>"header" }
+
+            -# .card.card-primary.animated.fadeInUp.animation-delay-7
+            -#   .card-header
+            -#     %h3.card-title
+            -#       %i.zmdi.zmdi-widgets
+            -#       Descripción
+            -#   .card-block
+            -#     %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat ipsam non eaque est architecto doloribus, labore nesciunt laudantium, ex id ea, cum facilis similique tenetur fugit nemo id minima possimus.
+      / container
+      / /.Container
+      /
+        ******************************************
+        ELEMENTOS DEL FOOTER
+        ******************************************
+    = render 'app/partials/footer'
+    = render 'app/partials/sidebar'
+    / //////////////// JAVASCRIP ////////////////////
+    %script{:src => "/assets/js/plugins.min.js"}
+    %script{:src => "/assets/js/app.min.js"}
+    %script{:src => "/assets/js/index.js"}
+
+
+:javascript
+  $(document).ready(function(){
+    $( ".ms-thumbnail-caption" ).click(function(e) {
+      var number = e.target.id;
+      for (var i=1; i<100; i++) {
+        $("#fb-"+i).toggleClass("fb-p");
+        $("#twt-"+i).toggleClass("twt-p");
+      }
+    });
+  });
+
+:sass
+  #share
+    .facebook-p
+      transition: all ease .7s
+      transform: translate(60px)
+      opacity: 0
+
+    .twitter-p
+      transition: all ease .7s
+      opacity: 0
+      transform: translate(-60px)
+
+    .fb-p
+      transition: all ease .7s
+      opacity: 1!important
+      transform: translate(10px, 60px)!important
+
+    .twt-p
+      transition: all ease .7s
+      opacity: 1!important
+      transform: translate(-8px, 60px)!important
+
+    .ul-share
+      display: inline-flex
+      padding: 0
+      list-style-type: none
+    .button-share
+      cursor: pointer
+
+    .btn-share:hover
+      color: #4caf50!important
+    .zmdi-share
+      color: #4caf50!important
+    .zmdi-facebook
+      color: #3b5998!important
+    .zmdi-twitter
+      color: #00aced!important
+    .fa-instagram
+      color: #e4405f!important
+    .zmdi-google
+      color: #dd4b39!important
+
+    .ms-footbar-social a
+      margin: 0 0 10px 10px
+      margin: 0 0 1rem 1rem
+      background-color: white!important
+
+    .ms-footbar-social a:hover i
+      color: #eeeeee!important
+      -webkit-transition: all ease .4s
+      transition: all ease .4s
+      -webkit-transform: rotate(360deg)
+      transform: rotate(360deg)

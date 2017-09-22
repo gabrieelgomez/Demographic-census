@@ -1,0 +1,23 @@
+#cinex
+  .cinex-section
+    .square
+      .square-left
+        .center-logo.center-f
+          = image_tag ("img/cinex/cinex_logo.png"), class:"cinex-logo"
+      .separator
+      .square-right
+        .text-center.padding-b.center-f
+          %a.btn.btn-5.btn-5a.zmdi.zmdi-local-movies{target:"_blank", :href => "http://www.cinex.com.ve/cine.php?cine=36"}
+            %span.text ¡Ver cartelera!
+            -# %span Ver cartelera
+    .cover
+
+
+#cinex-mobile
+  .cinex-section
+    .square-2
+      .text-center
+        = image_tag ("img/cinex/cinex_logo.png"), class:"cinex-logo"
+        %a.btn.btn-5.btn-5a.zmdi.zmdi-local-movies{target:"_blank", :href => "http://www.cinex.com.ve/cine.php?cine=36"}
+          %span.text ¡Ver cartelera de Cinex!
+    .cover

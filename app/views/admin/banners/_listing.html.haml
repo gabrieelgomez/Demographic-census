@@ -1,0 +1,19 @@
+%tr{ id: "row-#{banner.id}" }
+	- if can? :destroy_multiple, Banner
+		%td.item-check{style:"width: 10%"}
+			= link_to "", admin_banner_path(banner), remote: true, class: "show-row"
+			%input{ type:"checkbox", class: "filled-in", id: "checkbox-#{banner.id}", 'checklist-model'=>"check", 'checklist-value'=>"#{banner.id}", "ng-click"=>"selectByCheck(#{@objects.size})"}
+			%label{ for: "checkbox-#{banner.id}" }
+
+	%td{style:"width: 30%"}
+		= link_to "", admin_banner_path(banner, search: @query), remote: true, class: "show-row"
+		%span
+			= image_tag banner.image, style: "width: 45px; border-radius: 2px"
+	- if can? :update, Banner
+		%td{style:"width: 5%"}
+			= link_to edit_admin_banner_path(banner), class: "right btn-floating btn-flat tooltipped", style: "float:left !important", "data-position" => "bottom", "data-tooltip" =>t("keppler.actions.edit") do
+				= material_icon.md_18.create.css_class("md-dark")
+	- if can? :delete, Banner
+		%td{style:"width: 5%"}
+			= link_to admin_banner_path(banner), class: "btn-floating btn-flat right tooltipped", style: "float:left !important", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.delete"), method: :delete, data: { confirm: "¿Estás seguro?" } do
+				= material_icon.md_18.delete.css_class("md-dark")

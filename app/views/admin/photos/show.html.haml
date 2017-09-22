@@ -1,0 +1,18 @@
+= title(t('keppler.titles.show', model: "Photos"))
+.wrapper
+	.wrapper-body.container
+		.actions
+			- if can? :delete, Photo
+				= link_to admin_album_photo_path(@album_photo,@photo), class: "btn-floating btn-flat right tooltipped", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.delete"), method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
+					= material_icon.md_18.delete.css_class("md-dark")
+			- if can? :update, Photo
+				= link_to edit_admin_album_photo_path(@album_photo,@photo), class: "right btn-floating btn-flat tooltipped", "data-position" => "bottom", "data-tooltip" =>t("keppler.actions.edit") do
+					= material_icon.md_18.create.css_class("md-dark")
+			= link_to admin_album_photos_path(@album_photo,@photo), class: "btn-floating btn-flat tooltipped", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+				= material_icon.md_18.arrow_back.css_class("md-dark")
+		.card
+			.card-content
+				%ul.list
+					%li.list-row
+						.display-label= t("activerecord.attributes.#{controller_name.singularize}.picture")
+						.display-value.fs-body-1.tc-black-2= image_tag @photo.picture, style: "max-width:100%;"

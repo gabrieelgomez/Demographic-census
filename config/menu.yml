@@ -4,6 +4,34 @@ menu:
     url_path: /admin/dashboard
     icon: dashboard
     current: ['keppler_ga_dashboard/dashboard']
+  keppler_blog:
+    name: Blog
+    current: ['admin/blog/posts', 'admin/blog/categories']
+    icon: list
+    model: KepplerBlog::Post
+    submenu:
+      - meta_tags:
+          name: Posts
+          url_path: /admin/blog/posts
+          current: ['admin/blog/posts']
+      - google_adwords:
+          name: Categories
+          url_path: /admin/blog/categories
+          current: ['admin/blog/categories']
+  keppler_messages:
+    name: keppler messages
+    current: ['keppler_contact_us/messages', 'keppler_contact_us/message_settings']
+    icon: email
+    model: KepplerContactUs::Message
+    submenu:
+      - messages:
+          name: Messages
+          url_path: /admin/messages
+          current: ['keppler_contact_us/messages']
+      - message_settings:
+          name: Message Settings
+          url_path: /admin/message_settings
+          current: ['keppler_contact_us/message_settings']
   seo:
     name: SEO
     current: ['admin/meta_tags', 'admin/google_adwords']
@@ -24,26 +52,76 @@ menu:
     icon: insert_chart
     current: ['admin/google_analytics_tracks']
     model: GoogleAnalyticsTrack
+  category:
+    name: Directorio
+    url_path: /admin/categories
+    icon: view_list
+    current: ['admin/categories']
+    model: Category
+  #shop:
+  #  name: shops
+  #  url_path: /admin/shops
+  #  icon: insert_chart
+  #  current: ['admin/shops']
+  #  model: Shop
+  banner:
+    name: Publicidad
+    url_path: /admin/banners
+    icon: picture_in_picture
+    current: ['admin/banners']
+    model: Banner
+  # keppler_blog:
+  #   name: keppler blog
+  #   current: ['admin/blog/posts', 'admin/blog/categories']
+  #   icon: list
+  #   model: KepplerBlog::Post
+  #   submenu:
+  #     - meta_tags:
+  #         name: Posts
+  #         url_path: /admin/blog/posts
+  #         current: ['admin/blog/posts']
+  #     - google_adwords:
+  #         name: Categories
+  #         url_path: /admin/blog/categories
+  #         current: ['admin/blog/categories']
+  album:
+    name: Galería
+    url_path: /admin/albums
+    icon: perm_media
+    current: ['admin/albums']
+    model: Album
+  # photo:
+  #   name: photos
+  #   url_path: /admin/photos
+  #   icon: insert_chart
+  #   current: ['admin/photos']
+  #   model: Photo
+  # banner:
+  #   name: banners
+  #   url_path: /admin/banners
+  #   icon: insert_chart
+  #   current: ['admin/banners']
+  #   model: Banner
   user:
     name: users
     url_path: /admin/users
     icon: account_circle
     current: ["admin/users"]
     model: User
-  customize:
-    name: keppler design
-    icon: color_lens
-    current: ['admin/customizes']
-    model: Customize
-    submenu:
-      - customize:
-          name: frontend templates
-          url_path: /admin/customizes
-          current: ['admin/customizes']
-      - appearance:
-          name: admin appearance
-          url_path: /admin/settings/appearance
-          current: ['appearance']
+  # customize:
+  #   name: keppler design
+  #   icon: color_lens
+  #   current: ['admin/customizes']
+  #   model: Customize
+  #   submenu:
+  #     - customize:
+  #         name: frontend templates
+  #         url_path: /admin/customizes
+  #         current: ['admin/customizes']
+  #     - appearance:
+  #         name: admin appearance
+  #         url_path: /admin/settings/appearance
+  #         current: ['appearance']
   setting:
     name: setting
     current: ['admin/settings']

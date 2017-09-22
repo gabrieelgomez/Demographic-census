@@ -1,0 +1,13 @@
+.ms-hero-page-override.ms-hero-img-tiendas.ms-hero-bg-royal
+  .container
+    .text-center
+      %h1.no-m.ms-site-title.color-white.center-block.ms-site-title-lg.mt-2.animated.zoomInDown.animation-delay-5
+        Directorio de Compras
+      %br
+      %center.alfabetico
+        |
+        = link_to "TODAS", app_directorio_path
+        - @letters.each_char do |letra|
+          |
+          = link_to letra, search_path(letra)
+        |

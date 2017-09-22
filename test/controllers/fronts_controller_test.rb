@@ -18,7 +18,7 @@ class FrontsControllerTest < ActionController::TestCase
 
   test "should create front" do
     assert_difference('Front.count') do
-      post :create, front: { index: @front.index }
+      post :create, front: { blog: @front.blog, directorio: @front.directorio, gallery: @front.gallery, index: @front.index, somos: @front.somos, ubicacion: @front.ubicacion }
     end
 
     assert_redirected_to front_path(assigns(:front))
@@ -35,7 +35,7 @@ class FrontsControllerTest < ActionController::TestCase
   end
 
   test "should update front" do
-    patch :update, id: @front, front: { index: @front.index }
+    patch :update, id: @front, front: { blog: @front.blog, directorio: @front.directorio, gallery: @front.gallery, index: @front.index, somos: @front.somos, ubicacion: @front.ubicacion }
     assert_redirected_to front_path(assigns(:front))
   end
 

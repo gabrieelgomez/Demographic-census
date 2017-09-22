@@ -1,0 +1,28 @@
+#galeria.container.mt-6
+  %h2.text-center.color-primary.mb-4 Galería
+  / Start WOWSlider BODY section
+  #wowslider-container1
+    .ws_images
+      - @albums.each do |album|
+        %ul
+          %li
+            = link_to app_gallery_path(album.id) do
+              %img#wows1_0{:alt => "port1", :src => "#{album.cover}", :title => "#{album.title}"}
+      .ws_shadow
+
+      .mb
+        = link_to "/galeria", class: "btn btn-primary btn-raised btn-block animate-icon absolute" do
+          Ver todas
+          %i.ml-1.no-mr.zmdi.zmdi-long-arrow-right
+
+  %script{:src => "/assets/js/wowslider1.js", :type => "text/javascript"}
+  %script{:src => "/assets/js/script1.js", :type => "text/javascript"}
+
+
+:scss
+  .absolute {
+    width: 20%;
+    position: relative;
+    top: 10%;
+    left: 40%;
+  }

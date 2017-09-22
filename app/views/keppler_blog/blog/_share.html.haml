@@ -1,0 +1,83 @@
+.mt-2#share
+  .ms-footbar-block
+    .ms-footbar-social
+      %ul.ul-share
+        %li.facebook-p#fb
+          %a.btn-circle.btn-facebook.rrss{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A//www.emicaguacu.com/blog/", target: "_blank"}
+            %i.zmdi.zmdi-facebook
+
+        %li.button-share
+          %a.btn-circle.btn-shares.rrss
+            %i.zmdi.zmdi-share
+
+        %li.twitter-p#twt
+          %a.btn-circle.btn-twitter.rrss{:href => "https://twitter.com/home?status=https%3A//www.emicaguacu.com/blog/", target: "_blank"}
+            %i.zmdi.zmdi-twitter
+        -# %li
+        -#   %a.btn-circle.btn-instagram.rrss{:href => "https://www.instagram.com/emicaguacu/", :target => "_blank"}
+        -#     %i.fa.fa-instagram.fa-lg{"aria-hidden" => "true"}
+        -# %li
+        -#   %a.btn-circle.btn-google.rrss{:href => "https://goo.gl/maps/5V57AzS4iKy", :target => "_blank"}
+        -#     %i.zmdi.zmdi-google
+
+:javascript
+  $(document).ready(function(){
+    $( ".ms-thumbnail-caption" ).click(function() {
+      $("#fb").toggleClass("fb-p");
+      $("#twt").toggleClass("twt-p");
+    });
+  });
+
+:sass
+  #share
+    .facebook-p
+      transition: all ease .7s
+      transform: translate(60px)
+      opacity: 0
+
+    .twitter-p
+      transition: all ease .7s
+      opacity: 0
+      transform: translate(-60px)
+
+    .fb-p
+      transition: all ease .7s
+      opacity: 1!important
+      transform: translate(10px, 60px)!important
+
+    .twt-p
+      transition: all ease .7s
+      opacity: 1!important
+      transform: translate(-8px, 60px)!important
+
+    .ul-share
+      display: inline-flex
+      padding: 0
+      list-style-type: none
+    .button-share
+      cursor: pointer
+
+    .btn-share:hover
+      color: #4caf50!important
+    .zmdi-share
+      color: #4caf50!important
+    .zmdi-facebook
+      color: #3b5998!important
+    .zmdi-twitter
+      color: #00aced!important
+    .fa-instagram
+      color: #e4405f!important
+    .zmdi-google
+      color: #dd4b39!important
+
+    .ms-footbar-social a
+      margin: 0 0 10px 10px
+      margin: 0 0 1rem 1rem
+      background-color: white!important
+
+    .ms-footbar-social a:hover i
+      color: #eeeeee!important
+      -webkit-transition: all ease .4s
+      transition: all ease .4s
+      -webkit-transform: rotate(360deg)
+      transform: rotate(360deg)

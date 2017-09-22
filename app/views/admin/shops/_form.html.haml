@@ -1,0 +1,26 @@
+.wrapper
+	.wrapper-body.container
+		.actions
+			= link_to admin_category_shops_path, class: "btn-floating btn-flat tooltipped", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+				= material_icon.md_18.arrow_back.css_class("md-dark")
+		.wrapper-inputs
+			.card
+				.card-content
+					= simple_form_for [:admin, @category_shop, @shop] do |f|
+						.row
+							= f.input :brand, :as => :file_material, label: false, wrapper_html: { class: "file-field" }
+							= f.input :header, :as => :file_material, label: false, wrapper_html: { class: "file-field" }
+							= f.input :name
+							= f.hidden_field :category_id
+							= f.input :address, input_html: {class: "materialize-textarea"}
+							= f.input :description, input_html: {class: "materialize-textarea"}
+							= f.input :email
+							= f.input :phone_one
+							= f.input :phone_two
+							= f.input :facebook, label: "Facebook (URL)"
+							= f.input :instagram, label: "Instagram (URL)"
+							= f.input :twitter, label: "Twitter (URL)"
+
+							.form-actions.right
+								= f.button :submit, "Guardar", name: '_save'
+								= f.button :submit, t("keppler.actions.save_and_add_another"), name: '_add_other'
