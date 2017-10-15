@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/galeria', to: 'app/front#albums', as: :app_album
 
   get '/directorio', to: 'app/front#directorio', as: :app_directorio
-  get '/directorio/category/:category', to: 'app/front#directorio', as: :app_directorio_category
+  get '/directorio/categoria/:category', to: 'app/front#category', as: :directorio_category
   get '/directorio/:letter', to: 'app/front#directorio', as: :search
 
   # get '/search/:query', to: 'app/front#search', as: :search_shop

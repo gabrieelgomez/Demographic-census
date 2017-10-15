@@ -7,6 +7,7 @@ menu:
   keppler_blog:
     name: Blog
     current: ['admin/blog/posts', 'admin/blog/categories']
+    #   url_path: /admin/categories
     icon: list
     model: KepplerBlog::Post
     submenu:
@@ -32,32 +33,32 @@ menu:
           name: Message Settings
           url_path: /admin/message_settings
           current: ['keppler_contact_us/message_settings']
-  seo:
-    name: SEO
-    current: ['admin/meta_tags', 'admin/google_adwords']
-    icon: code
-    model: MetaTag
-    submenu:
-      - meta_tags:
-          name: 'Title & Metas'
-          url_path: /admin/meta_tags
-          current: ['admin/meta_tags']
-      - google_adwords:
-          name: Google Adwords
-          url_path: /admin/google_adwords
-          current: ['admin/google_adwords']
-  google_analytics_track:
-    name: google analytics tracks
-    url_path: /admin/google_analytics_tracks
-    icon: insert_chart
-    current: ['admin/google_analytics_tracks']
-    model: GoogleAnalyticsTrack
-  category:
-    name: Directorio
-    url_path: /admin/categories
-    icon: view_list
-    current: ['admin/categories']
-    model: Category
+  # seo:
+  #   name: SEO
+  #   current: ['admin/meta_tags', 'admin/google_adwords']
+  #   icon: code
+  #   model: MetaTag
+  #   submenu:
+  #     - meta_tags:
+  #         name: 'Title & Metas'
+  #         url_path: /admin/meta_tags
+  #         current: ['admin/meta_tags']
+  #     - google_adwords:
+  #         name: Google Adwords
+  #         url_path: /admin/google_adwords
+  #         current: ['admin/google_adwords']
+  # google_analytics_track:
+  #   name: google analytics tracks
+  #   url_path: /admin/google_analytics_tracks
+  #   icon: insert_chart
+  #   current: ['admin/google_analytics_tracks']
+  #   model: GoogleAnalyticsTrack
+  # category:
+  #   name: Directorio
+  #   url_path: /admin/categories
+  #   icon: view_list
+  #   current: ['admin/categories']
+  #   model: Category
   #shop:
   #  name: shops
   #  url_path: /admin/shops

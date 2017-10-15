@@ -1,4 +1,4 @@
-.ms-hero.ms-hero-material
+.ms-hero.ms-hero-material{style: "min-height: 750px;"}
   .container
     .col-lg-6.col-md-7
       #carousel-hero.carousel.slide.carousel-fade{"data-interval" => "8000", "data-ride" => "carousel"}
@@ -20,7 +20,7 @@
                         = image_tag post.image, class: "animated fadeInLeft animation-delay-18 img-responsive"
 
                       .col-sm-5.col-xs-12.animated.fadeInRight.animation-delay-19.fondo
-                        %p= sanitize(post.body, tags: []).truncate(300)
+                        %p.notice-p= sanitize(post.body, tags: []).truncate(300)
 
                     .ms-hero-material-buttons.text-right
                       .ms-hero-material-buttons.text-right
@@ -42,7 +42,8 @@
                         = image_tag post.image, class: "animated fadeInLeft animation-delay-18 img-responsive"
 
                       .col-sm-5.col-xs-12.animated.fadeInRight.animation-delay-19.fondo
-                        %p= sanitize(post.body, tags: []).truncate(300)
+                        %p{style: "word-break: break-word;"}
+                          = sanitize(post.body, tags: []).truncate(300)
 
                     .ms-hero-material-buttons.text-right
                       .ms-hero-material-buttons.text-right
@@ -86,3 +87,7 @@
                 - else
                   .ms-hero-img-slider.item
                     %img.margin.img-responsive.center{:alt => "", :src => "#{banner.image}"}
+:css
+  .notice-p {
+    word-wrap: break-word;
+  }

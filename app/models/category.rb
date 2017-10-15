@@ -9,6 +9,10 @@ class Category < ActiveRecord::Base
 
   validates :icon, presence: true
 
+  def url
+    name.downcase.split(' ').join('-')
+  end
+
   def self.search_field
     :icon_or_name_cont
   end

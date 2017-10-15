@@ -23,14 +23,17 @@ module App
 
       if params[:letter].nil?
         @q = Shop.ransack(params[:q])
-        tiendas = @q.result(distinct: true)
+        tiendas = @q.result(distinct: true).page(params[:page])
+        @tiendas = tiendas.per(20).order(name: :asc)
       else
         if params[:letter].eql?('#')
           @q = Shop.ransack(params[:letter])
-          tiendas = Shop.where("name REGEXP '^[0-9]'")
+          tiendas = Shop.where("name REGEXP '^[0-9]'").page(params[:page])
+          @tiendas = tiendas.order(name: :asc)
         else
           @q = Shop.ransack(:name_start => params[:letter])
-          tiendas = @q.result(distinct: true)
+          tiendas = @q.result(distinct: true).page(params[:page])
+          @tiendas = tiendas.order(name: :asc)
         end
       end
 
@@ -40,12 +43,34 @@ module App
         @list = false
       end
 
+      # if !@letter.nil?
+      #   @list = true
+      # else
+      #   @list = false
+      # end
+
 
       @count = tiendas.count
-      @tiendas = tiendas
-      # @tiendas = tiendas.page(params[:page]).per(4)
+      # @tiendas = tiendas
+      @tiendas = tiendas.page(params[:page]).per(20).order(name: :asc)
       #@categorias = categorias.page(params[:page]).per(4)
 
+    end
+
+    def category
+      @list = false
+      @letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#"
+      @param = params[:category]
+      @letter = params[:letter]
+
+      params[:q] = nil
+      params[:letter] = nil
+      # @tiendas = Shop.all.where(category_id: :category_id).order(name: :asc)
+      @tiendas = @categoria_shop.order(name: :asc)
+
+      @list = true
+
+      @count = @tiendas.count
     end
 
     def ubicacion

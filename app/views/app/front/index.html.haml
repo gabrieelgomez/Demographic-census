@@ -4,7 +4,6 @@
   = render 'app/partials/preload'
 
   .sb-site-container
-
     = render 'app/partials/home'
     = render 'app/partials/navbar'
     = render 'app/partials_index/carousel_notices'
@@ -15,7 +14,7 @@
           %b ¡Siempre hay algo nuevo!
     = render 'app/partials_index/gallery'
     -# = render 'app/partials_index/cinex'
-    = render 'app/partials_index/widget_instagram'
+    -# = render 'app/partials_index/widget_instagram'
   = render 'app/partials/footer'
   = render 'app/partials/sidebar'
 
@@ -27,4 +26,4 @@
 
   // Cambia las imagen de fondo del Home cada vez que se recarga la página
   var images = ['bg001.jpg', 'bg002.jpg', 'bg003.jpg', 'bg004.jpg', 'bg005.jpg'];
-  $('.ms-hero.ms-hero-material').css({'background-image': 'url(/assets/app/' + images[Math.floor(Math.random() * images.length)] + ')'});
+  $('.ms-hero.ms-hero-material').css({'background-image': 'url(assets/app/' + images[Math.floor(Math.random() * images.length)] + ')'});

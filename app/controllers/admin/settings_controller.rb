@@ -18,7 +18,7 @@ module Admin
     end
 
     def appearance_default
-      get_apparience_colors(["#b8222b", "#d32f2f", "#009688"])
+      get_apparience_colors(["#f44336", "#d32f2f", "#009688"])
       redirect_to(
         admin_settings_path(@render), notice: actions_messages(@setting)
       )

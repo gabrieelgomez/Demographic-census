@@ -1,4 +1,4 @@
-%aside.ms-footbar{:style => "background: #b8222b !important;z-index:1;"}
+%aside.ms-footbar{:style => "background: #c60000 !important;z-index:1;"}
   .container
     .row
 
@@ -48,31 +48,33 @@
         -# .hidden-xs{:style => "height: 125px"}
 
 
-      .col-md-4.col-sm-7.ms-footer-col.ms-footer-alt-color{:style => "background: rgb(155, 0, 0) !important;"}
+      .col-md-4.col-sm-7.ms-footer-col.ms-footer-alt-color{:style => "background: #9b0000 !important;"}
         .ms-footbar-block
           %h3.ms-footbar-title.text-center.mb-2
-            %a{:href => "https://twitter.com/emicaguacu", :target => "_blank", :title => "Síguenos en twitter"} @emicaguacu
-          -# %a.twitter-timeline{ href: "https://twitter.com/emicaguacu""data-chrome" => "noheader nofooter noborders", "data-lang" => "es", "data-link-color" => "#b8222b", "data-tweet-limit" => "5"} Tweets de emicaguacu
-          %a.twitter-timeline{ href: "https://twitter.com/#{KepplerBlog.twitter_username}", "data-widget-id"=>"#{KepplerBlog.widget_twitter_id}", "data-chrome"=>"noheader" }
+            %a{:href => "https://twitter.com/emicaguacu?lang=es", :target => "_blank", :title => "Síguenos en twitter"}
+              %i.fa.fa-twitter
+              @emicaguacu
+          -# %a.twitter-timeline{ href: "https://twitter.com/emicaguacu""data-chrome" => "noheader nofooter noborders", "data-lang" => "es", "data-link-color" => "#2ba6de", "data-tweet-limit" => "5"} Tweets de emicaguacu
+          %a.twitter-timeline{ href: "https://twitter.com/emicaguacu?lang=es", "data-widget-id"=>"#{KepplerBlog.widget_twitter_id}", "data-chrome"=>"noheader" }
           %script{:async => "", :charset => "utf-8", :src => "//platform.twitter.com/widgets.js"}
 
 
-      .col-md-4.col-sm-5.ms-footer-col.ms-footer-text-right{:style => "background: #b8222b !important;"}
+      .col-md-4.col-sm-5.ms-footer-col.ms-footer-text-right{:style => "background: #c60000 !important;"}
         .ms-footbar-block
-          .ms-footbar-title
-            %img.img-responsive.pull-right.hidden-xs{:alt => "Logo Emicaguacu", :src => "/assets/app/sello.jpg", :style => "max-width: 250px;"}
+          -# .ms-footbar-title
+          -#   %img.img-responsive.pull-right.hidden-xs{:alt => "Logo Emicaguacu", :src => "/assets//img/logo_white.png", :style => "max-width: 250px;"}
           .clearfix
           %br/
           %address.no-mb
             %p
               %i.color-danger-light.zmdi.zmdi-pin.mr-1
-              Av.6 Comunidad Cardón, Punto Fijo
+              Sector Doña Emilia, Comunidad Cardón
             %p
               %i.color-warning-light.zmdi.zmdi-map.mr-1
-              Estado Falcón / Venezuela
+              Punto Fijo - Estado Falcón / Venezuela
             %p
               %i.color-info-light.zmdi.zmdi-email.mr-1
-              %a{:href => "mailto:info@emicaguacu.com"} emicaguacu@gamil.com
+              %a{:href => "mailto:emicaguacu@gmail.com"} emicaguacu@gmail.com
             %p
               %i.color-royal-light.zmdi.zmdi-phone.mr-1
               +58 (269) 2485348
@@ -95,7 +97,7 @@
 %footer.ms-footer
   .container
     %p
-      Copyright © Emicaguacu Ciudad Comercial 2017 | Powered by
+      Copyright © Emicaguacu 2017 | Powered by
       %a{:href => "http://slicegroup.xyz/", :target => "_blank"} SliceGroup
 
 .btn-back-top

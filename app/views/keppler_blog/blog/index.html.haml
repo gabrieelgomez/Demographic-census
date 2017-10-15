@@ -11,8 +11,21 @@
         .container.container-full
           .ms-title
             %a{ href: "/" }
-              %img#logo.animated.fadeInLeft.animation-delay-7{:alt => "Logo Emicaguacu", :src => "/assets/img/logo_color.png"}
+              %img#logo.animated.fadeInLeft.animation-delay-7{:alt => "Logo Emicaguacu", :src => "/assets/app/sello.jpg"}
           .header-right
+            -# .share-menu
+            -#   %ul.share-menu-list
+            -#     %li.animated.fadeInRight.animation-delay-3
+            -#       %a.btn-circle.btn-google{:href => "javascript:void(0)"}
+            -#         %i.zmdi.zmdi-google
+            -#     %li.animated.fadeInRight.animation-delay-2
+            -#       %a.btn-circle.btn-facebook{:href => "javascript:void(0)"}
+            -#         %i.zmdi.zmdi-facebook
+            -#     %li.animated.fadeInRight.animation-delay-1
+            -#       %a.btn-circle.btn-twitter{:href => "javascript:void(0)"}
+            -#         %i.zmdi.zmdi-twitter
+            -#   %a.btn-circle.btn-circle-primary.animated.zoomInDown.animation-delay-7{:href => "javascript:void(0)"}
+            -#     %i.zmdi.zmdi-share
             %form.search-form.animated.zoomInDown.animation-delay-9
               = search_form_for @q, url: '/blog', html: { method: :get } do |f|
                 = f.search_field :title_or_body_cont, placeholder: 'Buscar noticias...', id: 'search-box', class: "search-input"
@@ -41,7 +54,7 @@
                               .ms-footbar-social
                                 %ul.ul-share
                                   %li.facebook-p{:id => "fb-#{var}"}
-                                    %a.btn-circle.btn-facebook.rrss{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A//www.emicaguacu.com/blog/", :target => "_blank"}
+                                    %a.btn-circle.btn-facebook.rrss{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A//emicaguacu.slicegroup.xyz/blog/", :target => "_blank"}
                                       %i.zmdi.zmdi-facebook
 
                                   %li.button-share{:id => "#{var}"}
@@ -49,7 +62,7 @@
                                       %i.zmdi.zmdi-share
 
                                   %li.twitter-p{:id => "twt-#{var}"}
-                                    %a.btn-circle.btn-twitter.rrss{:href => "https://twitter.com/home?status=https%3A//www.emicaguacu.com/blog/", :target => "_blank"}
+                                    %a.btn-circle.btn-twitter.rrss{:href => "https://twitter.com/home?status=https%3A//emicaguacu.slicegroup.xyz/blog/", :target => "_blank"}
                                       %i.zmdi.zmdi-twitter
                                 -# %li
                                 -#   %a.btn-circle.btn-instagram.rrss{:href => "https://www.instagram.com/emicaguacu/", :target => "_blank"}
@@ -195,7 +208,7 @@
     .zmdi-share
       color: #4caf50!important
     .zmdi-facebook
-      color: #3b5998!important
+      color: #9b0000!important
     .zmdi-twitter
       color: #00aced!important
     .fa-instagram

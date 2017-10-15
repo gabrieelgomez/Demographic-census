@@ -152,6 +152,10 @@ GEM
       responders
       warden (~> 1.2.3)
     devise-i18n (1.1.2)
+    dummy (0.9.6)
+    dummy_data (0.9.6)
+      dummy (>= 0.9.1)
+      rails (>= 3.0.0)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
@@ -159,6 +163,8 @@ GEM
     eventmachine (1.2.3)
     execjs (2.7.0)
     extlib (0.9.16)
+    faker (1.8.4)
+      i18n (~> 0.5)
     faraday (0.12.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
@@ -438,6 +444,8 @@ DEPENDENCIES
   commands
   devise
   devise-i18n
+  dummy_data
+  faker
   font-awesome-sass (~> 4.7.0)
   gibbon!
   google-api-client (~> 0.7.1)
@@ -482,4 +490,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.15.1
+   1.15.4

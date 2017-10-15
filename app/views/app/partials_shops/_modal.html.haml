@@ -11,7 +11,7 @@
             -a = 1
           -else
             -a = 2
-          .ms-hero-bg-warning.ms-hero-img-tienda{:style => "background-image: url(#{a.eql?(2) ? tienda.header : '/assets/img/tiendas.jpg'});"}
+          .ms-hero-bg-warning.ms-hero-img-tienda{:style => "background-image: url(#{a.eql?(2) ? tienda.header : '/assets/img/s003.jpg'});"}
             %h3.color-white.index-1.text-center.no-m.pt-4
               = tienda.name
             .color-medium.index-1.text-center.np-m
@@ -26,13 +26,15 @@
             %p
               = tienda.description
             %hr
-            %p
-              %i.color-info-light.zmdi.zmdi-email.mr-1
-              %a{:href => "mailto:joe@example.com"}
-                = tienda.email
-            %p
-              %i.color-royal-light.zmdi.zmdi-phone.mr-1
-              = tienda.phone_one
+            - unless tienda.email.blank?
+              %p
+                %i.color-info-light.zmdi.zmdi-email.mr-1
+                %a{:href => "mailto:joe@example.com"}
+                  = tienda.email
+            - unless tienda.phone_one.blank?
+              %p
+                %i.color-royal-light.zmdi.zmdi-phone.mr-1
+                = tienda.phone_one
             - if tienda.phone_two?
               %p
                 %i.color-success-light.fa.fa-fax.mr-1

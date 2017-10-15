@@ -1,15 +1,15 @@
 %nav.navbar.navbar-static-top.yamm.ms-navbar.ms-navbar-primary
   .container.container-full
-    .navbar-header
-      %a.navbar-brand{ href: "/", style: 'padding: 0' }
-        %img#logo2{:alt => "Logo Emicagucu", :src => "/assets/app/sello.jpg"}
+    -# .navbar-header
+      %a.navbar-brand{ href: "/" }
+        %img#logo2{:alt => "Logo Emicaguacu", :src => "/assets/img/logo_white.png"}
     #navbar.navbar-collapse.collapse
       %ul.nav.navbar-nav.menues.visible-md.visible-lg
         %li.dropdown.yamm-fw
-          %a.dropdown-toggle.animated.fadeIn.animation-delay-6{ :href => "/directorio", "aria-expanded" => "false", "aria-haspopup" => "true", "data-hover" => "dropdown", "data-name" => "component", "data-toggle" => "dropdown", :role => "button"}
-            %i.fa.fa-shopping-bag{"aria-hidden" => "true"}
-            Directorio
-            %i.zmdi.zmdi-chevron-down
+          -# %a.dropdown-toggle.animated.fadeIn.animation-delay-6{ :href => "/directorio", "aria-expanded" => "false", "aria-haspopup" => "true", "data-hover" => "dropdown", "data-name" => "component", "data-toggle" => "dropdown", :role => "button"}
+          -#   %i.fa.fa-shopping-bag{"aria-hidden" => "true"}
+          -#   Directorio
+          -#   %i.zmdi.zmdi-chevron-down
           %ul.dropdown-menu.dropdown-megamenu.animated.fadeIn.animated-2x
             %li
               .row
@@ -22,7 +22,7 @@
                         - 4.times do
                           - break if @categories[i].nil? or i > 11
                           %li
-                            = link_to @categories[i].name, "/directorio/category/#{@categories[i].id}"
+                            = link_to @categories[i].name, directorio_category_path(@categories[i])
                             - i += 1
 
         %li
