@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get '/directorio/categoria/:category', to: 'app/front#category', as: :directorio_category
   get '/directorio/:letter', to: 'app/front#directorio', as: :search
 
+  get '/downloads', to: 'app/front#downloads', as: :downloads
+
   # get '/search/:query', to: 'app/front#search', as: :search_shop
   root to: 'app/front#index', as: :root
   devise_for :users, skip: KepplerConfiguration.skip_module_devise
@@ -19,6 +21,16 @@ Rails.application.routes.draw do
 
   post 'newsletter/create', as: "newsletters"
   namespace :admin do
+    resources :downloads do
+      get '(page/:page)', action: :index, on: :collection, as: ''
+      get '/clone', action: 'clone'
+      delete(
+        action: :destroy_multiple,
+        on: :collection,
+        as: :destroy_multiple
+      )
+    end
+
     resources :banners do
       get '(page/:page)', action: :index, on: :collection, as: ''
       get '/clone', action: 'clone'

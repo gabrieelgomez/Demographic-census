@@ -65,6 +65,17 @@ module Rails
         end
       end
 
+      # Se usa para configurar la exportación del ActiveRecords a .xls,
+      # pero da problemas al borrar el KepplerScaffold
+      
+      # def add_config_xls
+      #   inject_into_file(
+      #     'config/initializers/mime_types.rb',
+      #     str_xls,
+      #     after: '# ActiveRecords to save as .xls'
+      #   )
+      # end
+
       def create_controller_files
         template(
           'controllers/controller.rb',
@@ -76,6 +87,7 @@ module Rails
       end
 
       def create_model_files
+        @attachments = ['logo', 'brand', 'photo', 'avatar', 'cover', 'image', 'picture']
         template(
           'models/model.rb',
           File.join(
@@ -87,6 +99,8 @@ module Rails
       end
 
       def create_views_files
+        @names = ['name', 'title', 'first_name', 'full_name']
+        @attachments = ['logo', 'brand', 'photo', 'avatar', 'cover', 'image', 'picture', 'banner', 'attachment']
         template_keppler_views('_description.html.haml')
         template_keppler_views('_index_show.html.haml')
         template_keppler_views('_listing.html.haml')
@@ -125,6 +139,10 @@ module Rails
 
       def str_ability
         "\n\n      # - #{controller_file_name.singularize.camelcase} authorize -\n      can :manage, #{controller_file_name.singularize.camelcase}"
+      end
+
+      def str_xls
+        "\nif #{controller_file_name.singularize.camelcase}.table_exists?\n  @#{controller_file_name.pluralize} = #{controller_file_name.singularize.camelcase}.all\n  @#{controller_file_name.pluralize}.to_xls(\n    only: %i[#{attributes_names.map { |name| name }.join(' ')}],\n    except: [:id],\n    header: false,\n    prepend: [['Col 0, Row 0', 'Col 1, Row 0'], ['Col 0, Row 1']],\n    column_width: [17, 15, 15, 40, 25, 37]\n  )\n  @#{controller_file_name.pluralize}.to_xls do |column, value|\n    column == :salutation ? t(value) : value\n  end\nend\n"
       end
 
       def str_locales(switch)

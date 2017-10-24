@@ -5,36 +5,36 @@
   %body
     = render 'app/partials/shop_button'
     = render 'app/partials/preload'
+    %header.ms-header.ms-header-white
+      .container.container-full
+        .ms-title
+          %a{ href: "/" }
+            %img#logo.animated.fadeInLeft.animation-delay-7{:alt => "Logo Emicaguacu", :src => "/assets/app/sello.jpg"}
+        .header-right
+          -# .share-menu
+          -#   %ul.share-menu-list
+          -#     %li.animated.fadeInRight.animation-delay-3
+          -#       %a.btn-circle.btn-google{:href => "javascript:void(0)"}
+          -#         %i.zmdi.zmdi-google
+          -#     %li.animated.fadeInRight.animation-delay-2
+          -#       %a.btn-circle.btn-facebook{:href => "javascript:void(0)"}
+          -#         %i.zmdi.zmdi-facebook
+          -#     %li.animated.fadeInRight.animation-delay-1
+          -#       %a.btn-circle.btn-twitter{:href => "javascript:void(0)"}
+          -#         %i.zmdi.zmdi-twitter
+          -#   %a.btn-circle.btn-circle-primary.animated.zoomInDown.animation-delay-7{:href => "javascript:void(0)"}
+          -#     %i.zmdi.zmdi-share
+          %form.search-form.animated.zoomInDown.animation-delay-9
+            = search_form_for @q, url: '/blog', html: { method: :get } do |f|
+              = f.search_field :title_or_body_cont, placeholder: 'Buscar noticias...', id: 'search-box', class: "search-input"
+              %label{:for => "search-box"}
+                %i.zmdi.zmdi-search
+          -# %a.btn-ms-menu.btn-circle.btn-circle-primary.sb-toggle-left.animated.zoomInDown.animation-delay-10.visible-xs.visible-sm{:href => "javascript:void(0)"}
+          -#   %i.zmdi.zmdi-menu
+    = render 'app/partials/navbar'
+
 
     .sb-site-container
-      %header.ms-header.ms-header-white
-        .container.container-full
-          .ms-title
-            %a{ href: "/" }
-              %img#logo.animated.fadeInLeft.animation-delay-7{:alt => "Logo Emicaguacu", :src => "/assets/app/sello.jpg"}
-          .header-right
-            -# .share-menu
-            -#   %ul.share-menu-list
-            -#     %li.animated.fadeInRight.animation-delay-3
-            -#       %a.btn-circle.btn-google{:href => "javascript:void(0)"}
-            -#         %i.zmdi.zmdi-google
-            -#     %li.animated.fadeInRight.animation-delay-2
-            -#       %a.btn-circle.btn-facebook{:href => "javascript:void(0)"}
-            -#         %i.zmdi.zmdi-facebook
-            -#     %li.animated.fadeInRight.animation-delay-1
-            -#       %a.btn-circle.btn-twitter{:href => "javascript:void(0)"}
-            -#         %i.zmdi.zmdi-twitter
-            -#   %a.btn-circle.btn-circle-primary.animated.zoomInDown.animation-delay-7{:href => "javascript:void(0)"}
-            -#     %i.zmdi.zmdi-share
-            %form.search-form.animated.zoomInDown.animation-delay-9
-              = search_form_for @q, url: '/blog', html: { method: :get } do |f|
-                = f.search_field :title_or_body_cont, placeholder: 'Buscar noticias...', id: 'search-box', class: "search-input"
-                %label{:for => "search-box"}
-                  %i.zmdi.zmdi-search
-            -# %a.btn-ms-menu.btn-circle.btn-circle-primary.sb-toggle-left.animated.zoomInDown.animation-delay-10.visible-xs.visible-sm{:href => "javascript:void(0)"}
-            -#   %i.zmdi.zmdi-menu
-
-      = render 'app/partials/navbar'
       .container
         .row
           .col-md-8
@@ -97,8 +97,9 @@
                           Leer más
                           %i.ml-1.no-mr.zmdi.zmdi-long-arrow-right
             - else
-              %center
-                No se encontraron resultados.
+              %figure.ms-thumbnail.ms-thumbnail-diagonal
+                %center
+                  %h3 No se encontraron resultados.
             = paginate @posts, outer_window: 3
           .col-md-4
             .card.animated.fadeInUp.animation-delay-7

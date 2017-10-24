@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170708211737) do
+ActiveRecord::Schema.define(version: 20171024132610) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -63,6 +63,14 @@ ActiveRecord::Schema.define(version: 20170708211737) do
     t.boolean  "installed",  limit: 1
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "downloads", force: :cascade do |t|
+    t.string   "pdf",         limit: 255
+    t.string   "title",       limit: 255
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "google_adwords", force: :cascade do |t|

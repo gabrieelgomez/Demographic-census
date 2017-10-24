@@ -1,0 +1,33 @@
+= title(t('keppler.titles.show', model: "Downloads"))
+.wrapper
+	.wrapper-body.container
+		.actions
+			- if can? :delete, Download
+				= link_to admin_download_path(@download), class: "btn-floating btn-flat right tooltipped", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.delete"), method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
+					= material_icon.md_18.delete.css_class("md-dark")
+			- if can? :update, Download
+				= link_to edit_admin_download_path(@download), class: "right btn-floating btn-flat tooltipped", "data-position" => "bottom", "data-tooltip" =>t("keppler.actions.edit") do
+					= material_icon.md_18.create.css_class("md-dark")
+			= link_to admin_downloads_path, class: "btn-floating btn-flat tooltipped", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+				= material_icon.md_18.arrow_back.css_class("md-dark")
+		.card
+			.card-content
+				%center.color-title= @download.title.to_s.humanize
+				%center= image_tag @download.pdf, style: "max-width:100%;height: 200px;"
+				%table.bordered
+					%tbody
+						%tr
+							%th
+								.display-label= t("activerecord.attributes.#{controller_name.singularize}.id")
+							%td
+								.display-value.fs-body-1.tc-black-2= @download.id.to_s.humanize
+						%tr
+							%th
+								.display-label= t("activerecord.attributes.#{controller_name.singularize}.title")
+							%td
+								.display-value.fs-body-1.tc-black-2= @download.title.blank? ? '----------' : @download.title
+						%tr
+							%th
+								.display-label= t("activerecord.attributes.#{controller_name.singularize}.description")
+							%td
+								.display-value.fs-body-1.tc-black-2= @download.description.blank? ? '----------' : @download.description

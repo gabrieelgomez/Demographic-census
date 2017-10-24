@@ -62,7 +62,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bourbon'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem 'material_icons'
-gem 'materialize-sass'
+gem 'materialize-sass'#, '0.98.0'
 
 # Authentication and Authorization
 gem 'cancancan'
