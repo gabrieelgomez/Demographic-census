@@ -13,7 +13,7 @@
 
                     .card-block
                       %a{ download: download.title, href: download.pdf }
-                        %h3.primary-color= download.title
+                        %h3.primary-color.class= download.title
                       %span
                         %i.fa.fa-calendar
                         = download.created_at.strftime("%d %b. %Y")
