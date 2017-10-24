@@ -10,6 +10,9 @@ class Ability
 
     if user.has_role? :admin
 
+      # - Download authorize -
+      can :manage, Download
+
       # - Banner authorize -
       can :manage, Banner
 

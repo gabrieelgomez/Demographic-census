@@ -5,15 +5,20 @@
     .ws_images
       %ul
         %li
-          %img#wows1_0{:alt => "s001", :src => "assets/img/s001.jpg", :title => "s001"}
+          %img#wows1_0{:alt => "s001", :src => "assets/app/bg001.jpg", :title => "s001"}
         %li
-          %img#wows1_1{:alt => "s002", :src => "assets/img/s002.jpg", :title => "s002"}
+          %img#wows1_1{:alt => "s002", :src => "assets/app/bg002.jpg", :title => "s002"}
         %li
-          %img#wows1_2{:alt => "s003", :src => "assets/img/s003.jpg", :title => "s003"}
+          %img#wows1_2{:alt => "s003", :src => "assets/app/bg003.jpg", :title => "s003"}
         %li
-          %img#wows1_3{:alt => "s004", :src => "assets/img/s004.jpg", :title => "s004"}
+          %img#wows1_3{:alt => "s004", :src => "assets/app/bg004.jpg", :title => "s004"}
         %li
-          %img#wows1_4{:alt => "s005", :src => "assets/img/s005.jpg", :title => "s005"}
+          %img#wows1_4{:alt => "s005", :src => "assets/app/bg005.jpg", :title => "s005"}
     .ws_shadow
   %script{:src => "/assets/js/wowslider2.js", :type => "text/javascript"}
   %script{:src => "/assets/js/script2.js", :type => "text/javascript"}
+
+:sass
+  .ws_images
+    img
+      width: 100%

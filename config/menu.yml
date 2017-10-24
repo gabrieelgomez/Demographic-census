@@ -103,6 +103,12 @@ menu:
   #   icon: insert_chart
   #   current: ['admin/banners']
   #   model: Banner
+  download:
+    name: downloads
+    url_path: /admin/downloads
+    icon: insert_chart
+    current: ['admin/downloads']
+    model: Download
   user:
     name: users
     url_path: /admin/users

@@ -63,7 +63,7 @@ h5, h6 {
     font-weight: 400;
 }
 a, a:hover, a:focus {
-    color: #333;
+    color: #fff !important;
 }
 a .material-icons, a:hover .material-icons, a:focus .material-icons {
     vertical-align: middle;
@@ -220,7 +220,7 @@ body .container .well-royal, body .container .jumbotron-royal, body .container-f
     background-color: #495bc0;
 }
 .btn.btn-raised:not(.btn-link):hover.btn-primary, .btn.btn-raised:not(.btn-link):focus.btn-primary, .btn.btn-raised:not(.btn-link).active.btn-primary, .btn.btn-raised:not(.btn-link):active.btn-primary, .btn-group-raised .btn:not(.btn-link):hover.btn-primary, .btn-group-raised .btn:not(.btn-link):focus.btn-primary, .btn-group-raised .btn:not(.btn-link).active.btn-primary, .btn-group-raised .btn:not(.btn-link):active.btn-primary, .input-group-btn .btn.btn-raised:not(.btn-link):hover.btn-primary, .input-group-btn .btn.btn-raised:not(.btn-link):focus.btn-primary, .input-group-btn .btn.btn-raised:not(.btn-link).active.btn-primary, .input-group-btn .btn.btn-raised:not(.btn-link):active.btn-primary, .btn-group-raised .input-group-btn .btn:not(.btn-link):hover.btn-primary, .btn-group-raised .input-group-btn .btn:not(.btn-link):focus.btn-primary, .btn-group-raised .input-group-btn .btn:not(.btn-link).active.btn-primary, .btn-group-raised .input-group-btn .btn:not(.btn-link):active.btn-primary {
-    background-color: #039be0;
+    background-color: #e00b03;
 }
 .btn.btn-raised:not(.btn-link):hover.btn-success, .btn.btn-raised:not(.btn-link):focus.btn-success, .btn.btn-raised:not(.btn-link).active.btn-success, .btn.btn-raised:not(.btn-link):active.btn-success, .btn-group-raised .btn:not(.btn-link):hover.btn-success, .btn-group-raised .btn:not(.btn-link):focus.btn-success, .btn-group-raised .btn:not(.btn-link).active.btn-success, .btn-group-raised .btn:not(.btn-link):active.btn-success, .input-group-btn .btn.btn-raised:not(.btn-link):hover.btn-success, .input-group-btn .btn.btn-raised:not(.btn-link):focus.btn-success, .input-group-btn .btn.btn-raised:not(.btn-link).active.btn-success, .input-group-btn .btn.btn-raised:not(.btn-link):active.btn-success, .btn-group-raised .input-group-btn .btn:not(.btn-link):hover.btn-success, .btn-group-raised .input-group-btn .btn:not(.btn-link):focus.btn-success, .btn-group-raised .input-group-btn .btn:not(.btn-link).active.btn-success, .btn-group-raised .input-group-btn .btn:not(.btn-link):active.btn-success {
     background-color: #46a149;
@@ -3532,7 +3532,7 @@ to {
     margin-bottom: 4rem!important;
 }
 }.bg-alt {
-    background-color: #607d8b;
+    background-color: #656565;
     color: #fff;
 }
 .index-1 {
@@ -3567,7 +3567,7 @@ to {
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .2);
 }
 .ms-tag {
-    background-color: #607d8b;
+    background-color: #656565;
     border-radius: 50px;
     color: #fff;
     padding: 1px 12px;
@@ -3743,6 +3743,7 @@ body .sb-site-container {
     background-color: #f5f5f5;
     min-height: 0;
     z-index: 2;
+    padding-top: 40px;
 }
 :focus {
     outline: none!important;
@@ -3759,7 +3760,7 @@ iframe {
     display: table;
 }
 .material-background {
-    background-color: #607d8b;
+    background-color: #656565;
     display: block;
     position: absolute;
     width: 100%;
@@ -3942,7 +3943,7 @@ h6, h5 {
     color: #616161;
     content: "\00bb"}
 a {
-    color: #F40003;
+    color: #9b0000;
     -webkit-transition: all ease .1s;
     transition: all ease .1s;
 }
@@ -5196,7 +5197,7 @@ blockquote.ms-blockquote footer {
     vertical-align: middle;
 }
 .label.label-default {
-    background-color: #607d8b;
+    background-color: #656565;
 }
 .label.pull-right {
     margin-top: 5px;
@@ -5210,7 +5211,7 @@ blockquote.ms-blockquote footer {
     color: #F40003;
 }
 .badge {
-    background-color: #607d8b;
+    background-color: #656565;
     margin: 0 0 0 2px;
     padding: 0 5px;
     font-size: 11px;
@@ -6350,7 +6351,7 @@ label.color-white {
     color: #fff;
     border: none;
     height: 50px;
-    margin-bottom: 40px;
+    margin-bottom: 0;
     box-shadow: 0 3px 3px rgba(0, 0, 0, .29);
 }
 .ms-navbar .navbar-brand {
@@ -9434,8 +9435,8 @@ pre.line-numbers>code {
     font-weight: 300;
 }
 .ms-hero.ms-hero-material .ms-hero-material-text-container .ms-hero-material-title h2 {
-    color: #47c4fd;
-    text-shadow: 2px 2px 0 black;
+    color: #fff;
+    /*text-shadow: 2px 2px 0 black;*/
     margin: 0;
     font-size: 20px;
     font-size: 2rem;
@@ -11993,8 +11994,8 @@ a.thumbnail:hover, a.thumbnail:focus {
     border-color: #424242;
 }
 .ms-color-box.blue-grey {
-    background-color: #607d8b;
-    border-color: #607d8b;
+    background-color: #656565;
+    border-color: #656565;
 }
 .ms-color-box.blue-grey.c300 {
     background-color: #90a4ae;
@@ -12049,7 +12050,7 @@ a.thumbnail:hover, a.thumbnail:focus {
     margin-bottom: 0;
 }
 .ms-footbar {
-    background-color: #607d8b;
+    background-color: #656565;
     color: #eee;
     position: relative;
     margin-top: 40px;
@@ -12178,7 +12179,7 @@ a.thumbnail:hover, a.thumbnail:focus {
     border-radius: 50%;
     margin-right: 10px;
     margin-right: 1rem;
-    border: solid 1px #607d8b;
+    border: solid 1px #656565;
 }
 .ms-footer-media .media .media-body .media-heading {
     font-size: 15px;
