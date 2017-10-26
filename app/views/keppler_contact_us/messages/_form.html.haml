@@ -14,11 +14,12 @@
 			.col-lg-12
 				= f.input :content, as: :text, label: false, input_html: {class: "form-control", placeholder: "Mensaje..."}
 		.row
-			.col-lg-6
-				= raw recaptcha_tags :display => { :theme => 'custom' }
-			.col-lg-6
-				%button.btn.btn-raised.btn-primary.pull-right{:type => "submit", style:"margin-top:2.8vh"}
-					ENVIAR
+			.col-lg-12
+				.col-lg-6
+					= raw recaptcha_tags :display => { :theme => 'custom' }
+				.col-lg-6
+					%button.btn.btn-raised.btn-primary.pull-right{:type => "submit", style:"margin-top:2.8vh"}
+						ENVIAR
 
 -# %form.form-horizontal
 -#   %fieldset
