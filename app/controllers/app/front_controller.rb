@@ -12,6 +12,10 @@ module App
       @albums = Album.last(3)
     end
 
+    def downloads
+      @downloads = Download.all
+    end
+
     def directorio
       @list = false
       @letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#"

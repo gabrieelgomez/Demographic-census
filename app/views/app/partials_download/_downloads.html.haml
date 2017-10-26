@@ -1,0 +1,54 @@
+.material-background
+.container
+  .row
+    .col-md-12
+      .row.masonry-container
+        .container
+          .row
+            - unless @downloads.empty?
+              - var = 0
+              - @downloads.reverse_order.each_with_index do |download, index|
+                .col-md-6
+                  %article.card.mb-4.wow.materialUp.animation-delay-5
+
+                    .card-block
+                      %a{ download: download.title, href: download.pdf }
+                        %h3.primary-color.class= download.title
+                      %span
+                        %i.fa.fa-calendar
+                        = download.created_at.strftime("%d %b. %Y")
+                      %p= sanitize(download.description, tags: []).truncate(300)
+                      -# %i.fa.fa-tags
+                      -# = link_to post.category.name, filter_path('category', post.category.permalink)
+                      -# %i.fa.fa-user
+                      -# = link_to post.user.name, filter_path('autor', post.user.permalink)
+                      %a{ download: download.title, href: download.pdf }
+                        %button.btn.btn-primary.btn-raised.btn-block.animate-icon Descargar
+
+            - else
+              %article.card.mb-4.wow.materialUp.animation-delay-5
+                .card-block
+                  %center
+                    No se encontraron resultados.
+            -# = paginate @downloads, outer_window: 3
+          .col-md-4
+            -# .card.animated.fadeInUp.animation-delay-7
+            -#   .card-tabs
+            -#     %ul.nav.nav-tabs.nav-tabs-full.nav-tabs-3.shadow-2dp{:role => "tablist"}
+            -#       %li.active{:role => "presentation"}
+            -#         %a.withoutripple{"aria-controls" => "categories", "data-toggle" => "tab", :href => "#categories", :role => "tab"}
+            -#           %i.no-mr.zmdi.zmdi-folder
+            -#       %li{:role => "presentation"}
+            -#         %a.withoutripple{"aria-controls" => "archives", "data-toggle" => "tab", :href => "#archives", :role => "tab"}
+            -#           %i.no-mr.zmdi.zmdi-time
+            -#       %li{:role => "presentation"}
+            -#         %a.withoutripple{"aria-controls" => "tags", "data-toggle" => "tab", :href => "#tags", :role => "tab"}
+            -#           %i.no-mr.zmdi.zmdi-tag-more
+            -# .card.card-info.animated.fadeInUp.animation-delay-7
+            -#   .card-header
+            -#     %h3.card-title
+            -#       %i.zmdi.zmdi-twitter
+            -#       = "Tweets por @#{KepplerBlog.twitter_username}"
+:sass
+  .grey-text
+    color: #555

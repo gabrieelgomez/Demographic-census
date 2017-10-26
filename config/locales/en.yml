@@ -1,6 +1,7 @@
 en:
   keppler:
     sidebar-menu:
+      downloads: Downloads
       banners: Banners
       photos: Photos
       albums: Albums
@@ -28,6 +29,7 @@ en:
         categories: Categories
     models:
       singularize:
+        download: download
         banner: banner
         photo: photo
         album: album
@@ -41,6 +43,7 @@ en:
         configuration: configuration
         user: user
       pluralize:
+        downloads: downloads
         banners: banners
         photos: photos
         albums: albums
@@ -54,6 +57,7 @@ en:
         configurations: configurations
         user: users
     modules:
+      admin/downloads: Downloads
       admin/banners: Banners
       admin/photos: Photos
       admin/albums: Albums

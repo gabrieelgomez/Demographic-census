@@ -1,0 +1,30 @@
+%tr{ id: "row-#{download.id}" }
+	- if can? :destroy_multiple, Download
+		%td.center.item-check
+			= link_to '', admin_download_path(download), remote: true, class: 'show-row'
+			%input{ type:'checkbox', class: 'filled-in', id: "checkbox-#{download.id}", 'checklist-model'=>'check', 'checklist-value'=>"#{download.id}", 'ng-click'=>"selectByCheck(#{@objects.size})"}
+			%label{ for: "checkbox-#{download.id}" }
+
+	%td.center
+		= link_to '', admin_download_path(download, search: @query), remote: true, class: 'show-row'
+		%span
+			= image_tag download.pdf, style: 'height: 50px'
+	%td.center
+		= link_to '', admin_download_path(download, search: @query), remote: true, class: 'show-row'
+		%span
+			= download.title
+	%td.center.btn-w5
+		= link_to admin_download_path(download), class: 'btn-floating waves-effect btn-flat', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Show' do
+			= material_icon.md_24.remove_red_eye.css_class('md-dark')
+	- if can? :update, Download
+		%td.center.btn-w5
+			= link_to edit_admin_download_path(download), class: 'btn-floating btn-flat tooltipped', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Edit' do
+				= material_icon.md_18.create.css_class('md-dark')
+	- if can? :clone, Download
+		%td.center.btn-w5
+			= link_to admin_download_clone_path(download), class: 'btn-floating waves-effect btn-flat', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Clone' do
+				= material_icon.md_24.content_copy.css_class('md-dark')
+	- if can? :delete, Download
+		%td.center.btn-w5{style:'padding-right: 20px'}
+			= link_to admin_download_path(download), class: 'btn-floating btn-flat tooltipped', 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Delete', method: :delete, data: { confirm: t('keppler.messages.data_confirm') } do
+				= material_icon.md_18.delete.css_class('md-dark')
