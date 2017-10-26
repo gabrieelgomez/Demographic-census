@@ -3724,7 +3724,7 @@ html {
 }
 body {
     color: #757575;
-    background-color: #f5f5f5;
+    background-color: #fff;
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
     font-size: 1.5rem;
@@ -8242,7 +8242,7 @@ pre.line-numbers>code {
     color: #fff;
 }
 .card.card-light-inverse a.link {
-    color: #fff;
+    color: #616161;
 }
 .card.card-light-inverse a.link:hover, .card.card-light-inverse a.link:focus {
     border-bottom: solid 1px #fff;
@@ -9117,7 +9117,7 @@ pre.line-numbers>code {
 }
 .ms-slidebar .ms-slidebar-menu>li>a.link {
     background-color: #fff;
-    color: #616161;
+    color: #616161 !important;
 }
 .ms-slidebar .ms-slidebar-menu>li>a.link:after {
     content: "\f2fb"}
