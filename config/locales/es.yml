@@ -1,9 +1,10 @@
 es:
   keppler:
     sidebar-menu:
-      downloads: Downloads
+      habitants: Habitantes
+      downloads: Descargas
       banners: Banners
-      photos: Photos
+      photos: Fotos
       albums: Albums
       shops: Shops
       categories: Categories
@@ -29,9 +30,10 @@ es:
         categories: Categorías
     models:
       singularize:
-        download: download
+        habitant: habitante
+        download: documento
         banner: banner
-        photo: photo
+        photo: foto
         album: album
         shop: shop
         category: category
@@ -43,12 +45,13 @@ es:
         configuration: configuración
         user: usuario
       pluralize:
-        downloads: downloads
+        habitants: habitantes
+        downloads: descargas
         banners: banners
-        photos: photos
-        albums: albums
-        shops: shops
-        categories: categories
+        photos: fotos
+        albums: álbums
+        shops: tiendas
+        categories: categorías
         customizes: customizes
         google_adwords: google adwords
         meta_tags: meta tags
@@ -57,9 +60,10 @@ es:
         configurations: configuraciones
         user: usuarios
     modules:
-      admin/downloads: Downloads
+      admin/habitants: Habitantes
+      admin/downloads: Descargas
       admin/banners: Banners
-      admin/photos: Photos
+      admin/photos: Fotos
       admin/albums: Albums
       admin/shops: Shops
       admin/categories: Categories
@@ -156,6 +160,12 @@ es:
         ga_account_id: Identificador de la cuenta
         ga_tracking: Identificador de segumiento
         ga_status: Habilitar Google Analytics
+      habitant:
+        identification: Cédula
+        full_name: Nombre Completo
+        phone: Teléfono
+        email: Correo
+        address: Dirección
   date:
     abbr_day_names:
     - Dom

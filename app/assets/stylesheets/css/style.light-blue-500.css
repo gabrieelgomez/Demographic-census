@@ -6055,6 +6055,12 @@ label.color-white {
     margin-top: 25px;
     float: right;
 }
+
+@media (min-width: 1200px) and (max-width: 1440px) {
+  .ms-header .header-right {
+    margin-right: 70px;
+  }
+}
 .ms-header .header-right .share-menu {
     display: inline-block;
 }
