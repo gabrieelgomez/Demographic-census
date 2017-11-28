@@ -109,6 +109,12 @@ menu:
     icon: insert_chart
     current: ['admin/downloads']
     model: Download
+  habitant:
+    name: habitants
+    url_path: /admin/habitants
+    icon: people
+    current: ['admin/habitants']
+    model: Habitant
   user:
     name: users
     url_path: /admin/users

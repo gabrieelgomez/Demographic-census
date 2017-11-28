@@ -31,6 +31,12 @@
 #logo {
 	max-width: 250px;
 }
+
+@media (min-width: 1200px) and (max-width: 1440px) {
+  #logo {
+    margin-left: 70px;
+  }
+}
 #logo2 {max-width: 150px;}
 .rrss {background: #9b0000 !important;}
 

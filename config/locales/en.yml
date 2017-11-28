@@ -1,6 +1,7 @@
 en:
   keppler:
     sidebar-menu:
+      habitants: Habitants
       downloads: Downloads
       banners: Banners
       photos: Photos
@@ -29,6 +30,7 @@ en:
         categories: Categories
     models:
       singularize:
+        habitant: habitant
         download: download
         banner: banner
         photo: photo
@@ -43,6 +45,7 @@ en:
         configuration: configuration
         user: user
       pluralize:
+        habitants: habitants
         downloads: downloads
         banners: banners
         photos: photos
@@ -57,6 +60,7 @@ en:
         configurations: configurations
         user: users
     modules:
+      admin/habitants: Habitants
       admin/downloads: Downloads
       admin/banners: Banners
       admin/photos: Photos

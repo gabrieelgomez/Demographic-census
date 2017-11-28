@@ -3,7 +3,6 @@ class NewsletterController < ApplicationController
   	gibbon = Gibbon::Request.new(api_key: Rails.application.secrets.mailchimp_api_key)
   	gibbon.timeout = 10
   	@newsletter = Newsletter.new(newsletter_params)
-
   	respond_to do |format|
 	  	if @newsletter.save
 	  		gibbon.lists("e3dd9218f0").members.create(body:{email_address: @newsletter.email, status: "subscribed"})
