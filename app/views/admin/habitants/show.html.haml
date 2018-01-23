@@ -1,0 +1,47 @@
+= title(t('keppler.titles.show', model: "Habitants"))
+.wrapper
+	.wrapper-body.container
+		.actions
+			- if can? :delete, Habitant
+				= link_to admin_habitant_path(@habitant), class: "btn-floating btn-flat right tooltipped", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.delete"), method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
+					= material_icon.md_18.delete.css_class("md-dark")
+			- if can? :update, Habitant
+				= link_to edit_admin_habitant_path(@habitant), class: "right btn-floating btn-flat tooltipped", "data-position" => "bottom", "data-tooltip" =>t("keppler.actions.edit") do
+					= material_icon.md_18.create.css_class("md-dark")
+			= link_to admin_habitants_path, class: "btn-floating btn-flat tooltipped", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+				= material_icon.md_18.arrow_back.css_class("md-dark")
+		.card
+			.card-content
+				%center.color-title= @habitant.full_name.to_s.humanize
+				%table.bordered
+					%tbody
+						%tr
+							%th
+								.display-label= t("activerecord.attributes.#{controller_name.singularize}.id")
+							%td
+								.display-value.fs-body-1.tc-black-2= @habitant.id.to_s.humanize
+						%tr
+							%th
+								.display-label= t("activerecord.attributes.#{controller_name.singularize}.identification")
+							%td
+								.display-value.fs-body-1.tc-black-2= @habitant.identification.blank? ? '----------' : @habitant.identification
+						%tr
+							%th
+								.display-label= t("activerecord.attributes.#{controller_name.singularize}.full_name")
+							%td
+								.display-value.fs-body-1.tc-black-2= @habitant.full_name.blank? ? '----------' : @habitant.full_name
+						%tr
+							%th
+								.display-label= t("activerecord.attributes.#{controller_name.singularize}.phone")
+							%td
+								.display-value.fs-body-1.tc-black-2= @habitant.phone.blank? ? '----------' : @habitant.phone
+						%tr
+							%th
+								.display-label= t("activerecord.attributes.#{controller_name.singularize}.email")
+							%td
+								.display-value.fs-body-1.tc-black-2= @habitant.email.blank? ? '----------' : @habitant.email
+						%tr
+							%th
+								.display-label= t("activerecord.attributes.#{controller_name.singularize}.address")
+							%td
+								.display-value.fs-body-1.tc-black-2= @habitant.address.blank? ? '----------' : @habitant.address

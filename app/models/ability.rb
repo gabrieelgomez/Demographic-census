@@ -10,6 +10,9 @@ class Ability
 
     if user.has_role? :admin
 
+      # - Habitant authorize -
+      can :manage, Habitant
+
       # - Download authorize -
       can :manage, Download
 
