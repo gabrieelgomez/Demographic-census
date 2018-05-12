@@ -58,6 +58,19 @@ ActiveRecord::Schema.define(version: 20171115125459) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string   "data_file_name",    limit: 255, null: false
+    t.string   "data_content_type", limit: 255
+    t.integer  "data_file_size",    limit: 4
+    t.string   "type",              limit: 30
+    t.integer  "width",             limit: 4
+    t.integer  "height",            limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "assetable_id",      limit: 4
+    t.string   "assetable_type",    limit: 255
+  end
+
   create_table "customizes", force: :cascade do |t|
     t.string   "file",       limit: 255
     t.boolean  "installed",  limit: 1
